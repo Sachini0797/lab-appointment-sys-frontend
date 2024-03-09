@@ -1,0 +1,34 @@
+<div
+  class="container d-flex justify-content-center align-items-center"
+  style="height: 100vh"
+>
+  <div class="row justify-content-center">
+    <div class="col-5">
+      <div class="card border-0 shadow-lg" style="padding: 25px">
+        <img src="/assets/logo/logo.png" class="img-fluid" alt="..." />
+      </div>
+    </div>
+    <div class="col">
+      <h1 class="display-4">
+        Welcome to <b>HealthTrack</b>!
+        <p class="lead" style="font-weight: bold">
+          {{ todayRealtimeDate | date : "dd, MMM yyyy | hh:mm:ss a " }}
+        </p>
+      </h1>
+      <p class="lead">HealthTrack Lab Scheduler System Home Page</p>
+
+      <div>
+        <div class="alert alert-success">
+          <span id="home-logged-message">You are logged in as user "".</span>
+        </div>
+
+        <div class="alert alert-warning">
+          <button type="button" (click)="login()" class="btn btn-info">
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>sign in</b
+            >&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
