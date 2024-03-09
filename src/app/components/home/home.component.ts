@@ -19,8 +19,5 @@ export class HomeComponent implements OnInit {
       this.todayRealtimeDate = Date.now();
     }, 1);
   }
-  login(): void {
-    console.log("hello")
-    this.router.navigate(['/login']);
-  }
+  
 }
