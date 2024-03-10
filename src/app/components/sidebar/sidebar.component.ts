@@ -11,17 +11,21 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
   styleUrl: './sidebar.component.scss',
 })
 export class SidebarComponent {
-
-  
   @Input() isExpanded: boolean = false;
   @Output() toggleSidebar: EventEmitter<boolean> = new EventEmitter<boolean>();
 
-  isConfigurationExpanded: boolean = false;
+  @Input() showEntities: boolean = false;
+  @Input() showDoctor: boolean = false;
 
+ 
   handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
-  toggleConfiguration() {
-    this.isConfigurationExpanded = !this.isConfigurationExpanded;
 
-    console.log(this.isConfigurationExpanded);
+  toggleEntities() {
+    this.showEntities = !this.showEntities;
   }
+
+  toggleDoctors() {
+    this.showDoctor = !this.showDoctor;
+  }
+  
 }
