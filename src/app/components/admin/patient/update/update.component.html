@@ -1,0 +1,455 @@
+<app-sidebar
+  [isExpanded]="sidebarExpanded"
+  (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+></app-sidebar>
+
+<div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }"> 
+  <div class="row justify-content-center ">
+    <div class="col-10">
+      <form
+        name="editForm"
+        role="form"
+        novalidate
+        (ngSubmit)="save()"
+        [formGroup]="editForm"
+      >
+        <h2 id="jhi-user-profile-heading">Create or edit a Patient Profile</h2>
+  
+        <div>
+          <div class="form-group" [hidden]="!editForm.get('id')!.value">
+            <label for="id">ID</label>
+            <input
+              type="text"
+              class="form-control"
+              id="id"
+              name="id"
+              formControlName="id"
+              readonly
+            />
+          </div>
+  
+          <div class="row" style="display: flex">
+            <div class="col-8">
+              <div class="form-group">
+                <label class="form-control-label" for="field_uid">Uid</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="uid"
+                  id="field_uid"
+                  formControlName="uid"
+                />
+              </div>
+            </div>
+            <div class="col-4" style="height: 85px !important; display: flex">
+              <div
+                style="
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                "
+              >
+                <div class="form-check">
+                  <label class="form-control-label" for="field_connected"
+                    >Connected</label
+                  >
+                  <input
+                    type="checkbox"
+                    class="form-check-input"
+                    name="connected"
+                    id="field_connected"
+                    formControlName="connected"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_designation"
+                  >Designation</label
+                >
+                <select
+                  class="form-control"
+                  name="designation"
+                  formControlName="designation"
+                  id="field_designation"
+                >
+                  <option value="MR">Mr</option>
+                  <option value="MS">Ms</option>
+                  <option value="MRS">Mrs</option>
+                  <option value="MISS">Miss</option>
+                  <option value="MASTER">Master</option>
+                  <option value="DR">Dr</option>
+                  <option value="REV_BRO">Rev_Bro</option>
+                  <option value="REV_SISTER">Rev_Sister</option>
+                  <option value="REV">Rev</option>
+                  <option value="HON">Hon</option>
+                  <option value="BABY">Baby</option>
+                  <option value="BABY_OF">Baby of</option>
+                  <option value="DOG">Dog</option>
+                  <option value="CAT">Cat</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_initials"
+                  >Initials (optional)</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="initials"
+                  id="field_initials"
+                  formControlName="initials"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_firstName"
+                  >First Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="firstName"
+                  id="field_firstName"
+                  formControlName="firstName"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_lastName"
+                  >Last Name</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="lastName"
+                  id="field_lastName"
+                  formControlName="lastName"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-3">
+              <div class="form-group">
+                <label class="form-control-label" for="field_gender"
+                  >Gender (sex)</label
+                >
+                <select
+                  class="form-control"
+                  name="gender"
+                  formControlName="gender"
+                  id="field_gender"
+                >
+                  <option value="MALE">MALE</option>
+                  <option value="FEMALE">FEMALE</option>
+                  <option value="RATHER_NOT_SAY">RATHER_NOT_SAY</option>
+                  <option value="MTF">MTF</option>
+                  <option value="FTM">FTM</option>
+                  <option value="NOT_SURE">NOT_SURE</option>
+                </select>
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_nic">Nic</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="nic"
+                  id="field_nic"
+                  formControlName="nic"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_passportNo"
+                  >Passport No</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="passportNo"
+                  id="field_passportNo"
+                  formControlName="passportNo"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_email">Email</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="email"
+                  id="field_email"
+                  formControlName="email"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_phone"
+                  >Phone 1</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="phone"
+                  id="field_phone"
+                  formControlName="phone"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_phone2"
+                  >Phone 2</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="phone2"
+                  id="field_phone2"
+                  formControlName="phone2"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_height"
+                  >Height</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  name="height"
+                  id="field_height"
+                  formControlName="height"
+                />
+              </div>
+            </div>
+  
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_weight"
+                  >Weight</label
+                >
+                <input
+                  type="number"
+                  class="form-control"
+                  name="weight"
+                  id="field_weight"
+                  formControlName="weight"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <div class="row">
+            <div class="col-6">
+              <div class="form-group">
+                <label class="form-control-label" for="field_address"
+                  >Address</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="address"
+                  id="field_address"
+                  formControlName="address"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_postalCode"
+                  >Postal Code</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="postalCode"
+                  id="field_postalCode"
+                  formControlName="postalCode"
+                />
+              </div>
+            </div>
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_city">City</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  name="city"
+                  id="field_city"
+                  formControlName="city"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <!-- <div class="row">
+                      <div class="col-12">
+    
+                          <div class="form-group">
+                              <label class="form-control-label" for="field_dob">Dob</label>
+                              <div class="input-group">
+                                  <input id="field_dob" type="text" class="form-control" name="dob" ngbDatepicker #dobDp="ngbDatepicker" formControlName="dob" />
+                                  <span class="input-group-append">
+                                      <button type="button" class="btn btn-secondary" (click)="dobDp.toggle()"><fa-icon icon="calendar-alt"></fa-icon></button>
+                                  </span>
+                              </div>
+                          </div>
+                      </div>
+                     
+                  </div> -->
+  
+          <div class="col">
+            <div class="form-group">
+              <label class="form-control-label" for="field_age">Age</label>
+              <input
+                type="number"
+                class="form-control"
+                name="age"
+                id="field_age"
+                formControlName="age"
+              />
+            </div>
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="form-group">
+                <label class="form-control-label" for="field_profession"
+                  >Profession</label
+                >
+                <input
+                  type="text"
+                  class="form-control"
+                  name="profession"
+                  id="field_profession"
+                  formControlName="profession"
+                />
+              </div>
+            </div>
+  
+            <div
+              class="col-2"
+              style="
+                height: 85px !important;
+                display: flex;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+              "
+            >
+              <div class="form-check">
+                <label
+                  class="form-control-label"
+                  for="field_maritialStatusMarried"
+                  >Maritial Status Married</label
+                >
+                <input
+                  type="checkbox"
+                  class="form-check-input"
+                  name="maritialStatusMarried"
+                  id="field_maritialStatusMarried"
+                  formControlName="maritialStatusMarried"
+                />
+              </div>
+            </div>
+          </div>
+  
+          <!-- <input type="file" accept="image/*" id="img" (change)="imageUpload($event)" />
+            <img id="output_image" [src]="img" style="object-fit: contain" height="180px" width="120px" /> -->
+  
+          <div class="form-group">
+            <label class="form-control-label" for="field_applicantsPhotograph"
+              >Applicants Photograph</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="applicantsPhotograph"
+              id="field_applicantsPhotograph"
+              formControlName="applicantsPhotograph"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label class="form-control-label" for="field_remarks">Remarks</label>
+            <input
+              type="text"
+              class="form-control"
+              name="remarks"
+              id="field_remarks"
+              formControlName="remarks"
+            />
+          </div>
+  
+          <div class="form-group">
+            <label class="form-control-label" for="field_registered"
+              >Registered</label
+            >
+            <div class="input-group">
+              <!-- <input
+                id="field_registered"
+                type="text"
+                class="form-control"
+                name="registered"
+                ngbDatepicker
+                #registeredDp="ngbDatepicker"
+                formControlName="registered"
+              />
+              <span class="input-group-append">
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="registeredDp.toggle()"
+                ></button>
+              </span> -->
+            </div>
+          </div>
+        </div>
+  
+        <div>
+          <br />
+          <button
+            type="button"
+            id="cancel-save"
+            class="btn btn-secondary"
+            (click)="previousState()"
+          >
+            Cancel
+          </button>
+          &nbsp;&nbsp;
+          <button
+            type="submit"
+            id="save-entity"
+            [disabled]="editForm.invalid || isSaving"
+            class="btn btn-primary"
+          >
+            Save
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+   
+</div> 

@@ -4,11 +4,13 @@
       <div class="card border-0 shadow-lg mt-5" style="padding: 25px">
         <div class="card-body">
           <h1 class="card-title">Sign in</h1>
-          <div class="alert alert-danger">
-            <strong>Failed to sign in!</strong> Please check your credentials
-            and try again.
-          </div>
-          <form class="form" role="form">
+          <form
+            class="form"
+            role="form"
+            name="form"
+            [formGroup]="loginForm"
+            (ngSubmit)="onSubmit()"
+          >
             <div class="mb-3">
               <label class="username-label" for="username">Username</label>
               <input
@@ -19,7 +21,6 @@
                 placeholder="Your username"
                 formControlName="username"
                 #username
-                data-cy="username"
               />
             </div>
 
@@ -32,11 +33,10 @@
                 id="password"
                 placeholder="Your password"
                 formControlName="password"
-                data-cy="password"
               />
             </div>
 
-            <div class="form-check">
+            <!-- <div class="form-check">
               <label class="form-check-label" for="rememberMe">
                 <input
                   class="form-check-input"
@@ -47,17 +47,14 @@
                 />
                 <span>Remember me</span>
               </label>
-            </div>
+            </div> -->
 
-            <button type="submit" class="btn btn-primary" data-cy="submit">
+            <button type="submit" class="btn btn-primary">
               Sign in
             </button>
           </form>
           <div class="mt-3 alert alert-warning">
-            <a
-              class="alert-link"
-              routerLink="/account/reset/request"
-              data-cy="forgetYourPasswordSelector"
+            <a class="alert-link" routerLink="/account/reset/request"
               >Did you forget your password?</a
             >
           </div>

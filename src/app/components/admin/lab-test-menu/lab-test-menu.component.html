@@ -5,4 +5,42 @@
 
 <div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
   <p>lab-test-menu works!</p>
+  <div class="container">
+    <ul class="  " style="width: 100%">
+      <div class="row">
+        <div class="col-4">
+          <li>
+            <a class="dropdown-item" routerLink="/alkaline-phosphatase" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <!-- <fa-icon icon="vial" [fixedWidth]="true"></fa-icon> -->
+              <span><span class="number">01 &nbsp;</span>Alkaline Phosphatase</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/aptt-test" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <!-- <fa-icon icon="vial" [fixedWidth]="true"></fa-icon> -->
+              <span><span class="number">02 &nbsp;</span>Aptt Test</span>
+            </a>
+          </li>
+          <li>
+            <a class="dropdown-item" routerLink="/blood-grouping" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
+              <!-- <fa-icon icon="vial" [fixedWidth]="true"></fa-icon> -->
+              <span><span class="number">03 &nbsp;</span>Blood Grouping </span>
+            </a>
+          </li>
+          <li>
+            <a
+              class="dropdown-item"
+              routerLink="/blood-sugar-series-type-2"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+               <span><span class="number">04 &nbsp;</span>Blood Sugar Series Type 2 </span>
+            </a>
+          </li>
+
+        </div>
+      </div>
+    </ul>
+  </div>
+  
 </div>

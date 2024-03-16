@@ -76,7 +76,7 @@
             />
           </svg>
         </div>
-        <div class="title">Lab Tests</div>
+        <div class="title">Lab Tests Menu</div>
       </div>
     </div>
     <div class="link with-children" [routerLinkActive]="'active'">
@@ -179,31 +179,67 @@
         </div>
       </div>
 
-      <!-- <div class="children" *ngIf="showEntities">
-        <div class="link" (click)="toggleDoctors()">
-          <div class="content" [routerLinkActive]="'active'">
+      <div class="children" *ngIf="showEntities">
+        <div class="link">
+          <div
+            class="content"
+            [routerLink]="['/admin/lab-tests']"
+            [queryParams]="{ child: '1' }"
+            [routerLinkActive]="'active'"
+          >
             <div class="icon">
-              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-person-badge-fill" viewBox="0 0 16 16">
-                <path d="M2 2a2 2 0 0 1 2-2h8a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2zm4.5 0a.5.5 0 0 0 0 1h3a.5.5 0 0 0 0-1zM8 11a3 3 0 1 0 0-6 3 3 0 0 0 0 6m5 2.755C12.146 12.825 10.623 12 8 12s-4.146.826-5 1.755V14a1 1 0 0 0 1 1h8a1 1 0 0 0 1-1z"/>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-sticky-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177z"
+                />
               </svg>
             </div>
-            <div class="title">Doctor</div>
+            <div class="title">Lab Tests</div>
           </div>
         </div>
-        <div class="subChildren" *ngIf="showDoctor">
-          <div class="link">
-            <div
-              class="content"
-              [routerLink]="['/admin/patient']"
-              [queryParams]="{ child: '1' }"
-              [routerLinkActive]="'active'"
-            >
-              <div class="title" style="padding-left: 30px; color: red;">Doctor</div>
+      </div>
+
+      <div class="children" *ngIf="showEntities">
+        <div class="link">
+          <div
+            class="content"
+            [routerLink]="['/admin/lab-tests-invoice']"
+            [queryParams]="{ child: '1' }"
+            [routerLinkActive]="'active'"
+          >
+            <div class="icon">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="16"
+                height="16"
+                fill="currentColor"
+                class="bi bi-sticky-fill"
+                viewBox="0 0 16 16"
+              >
+                <path
+                  d="M2.5 1A1.5 1.5 0 0 0 1 2.5v11A1.5 1.5 0 0 0 2.5 15h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 15 8.586V2.5A1.5 1.5 0 0 0 13.5 1zm6 8.5a1 1 0 0 1 1-1h4.396a.25.25 0 0 1 .177.427l-5.146 5.146a.25.25 0 0 1-.427-.177z"
+                />
+              </svg>
             </div>
+            <div class="title">Lab Tests Invoice</div>
           </div>
         </div>
-      </div> -->
+      </div>
     </div>
   </div>
-  <div class="footer"></div>
+  <hr style="height:2px;border-width:0;color:gray;background-color:gray" />
+  <div class="footer" style="padding: 30px; justify-content: end;">
+    <div class="row justify-content-center">
+      <button type="button" class="btn btn-light" (click)="logout()">Logout</button>
+
+      
+    </div>
+  </div>
 </div>

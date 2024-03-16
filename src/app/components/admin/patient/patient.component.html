@@ -4,5 +4,258 @@
 ></app-sidebar>
 
 <div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
-  <p>patient works!</p>
+  <div class="m-5">
+    <h2 id="page-heading" data-cy="UserProfileHeading">
+      <span>User Profiles</span>
+
+      <div class="d-flex justify-content-end">
+        <button class="btn btn-primary" [routerLink]="['/admin/patient/new']">
+          <span class="hidden-sm-down"> Create a new User Profile </span>
+        </button>
+      </div>
+    </h2>
+
+    <form name="searchForm" class="row row-cols-sm-auto align-items-center">
+      <div class="col-sm-12">
+        <div class="input-group w-100 mt-3">
+          <label class="visually-hidden" for="currentSearch"
+            >Search for User Profile</label
+          >
+          <!-- <input type="text" class="form-control" [(ngModel)]="currentSearch" id="currentSearch" name="currentSearch" placeholder="Query" /> -->
+          <input
+            type="text"
+            class="form-control"
+            id="currentSearch"
+            name="currentSearch"
+            placeholder="Query"
+          />
+
+          <button class="btn btn-info">Search</button>
+
+          <!-- <button class="btn btn-danger" (click)="search('')" *ngIf="currentSearch">
+            <fa-icon icon="trash-alt"></fa-icon>
+          </button> -->
+        </div>
+      </div>
+    </form>
+
+    <!-- <div class="alert alert-warning" id="no-result" *ngIf="userProfiles?.length === 0">
+      <span>No User Profiles found</span>
+    </div> -->
+
+    <!-- <div class="table-responsive table-entities" id="entities" *ngIf="userProfiles && userProfiles.length > 0"> -->
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <th scope="col">
+              <div class="d-flex">
+                <span>ID</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Auto Id</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Uid</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Designation</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Initials</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>First Name</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Last Name</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Gender</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Nic</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Passport No</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Email</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Phone</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Phone 2</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Address</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Postal Code</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>City</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Age</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Dob</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Age Or Dob</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Show In Days And Months</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Maritial Status Married</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Profession</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Applicants Photograph</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Remarks</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Registered</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Connected</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Height</span>
+              </div>
+            </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Weight</span>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <!-- <tr *ngFor="let userProfile of userProfiles; trackBy: trackId" data-cy="entityTable"> -->
+          <tr>
+            <td>
+              <!-- <a [routerLink]="['/user-profile', userProfile.id, 'view']">{{ userProfile.id }}</a> -->
+            </td>
+            <td>1</td>
+            <td>u1</td>
+            <td>MS</td>
+            <td>N.H</td>
+            <td>Sachini</td>
+            <td>Madushika</td>
+            <td>Female</td>
+            <td>977666543V</td>
+            <td></td>
+            <td>sachinigmail.com</td>
+            <td>07766554432</td>
+            <td></td>
+            <td>abc</td>
+            <td></td>
+            <td>Kuliyapitiya</td>
+            <td>26</td>
+            <td>1997/07/29</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td>168</td>
+            <td>47</td>
+            <td class="text-end">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
+                  <span class="d-none d-md-inline">View</span>
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <span class="d-none d-md-inline">Edit</span>
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn btn-danger btn-sm"
+                  data-cy="entityDeleteButton"
+                  [routerLink]="['/admin/patient/delete']"
+                  (click)="delete()"
+                >
+                  <span class="d-none d-md-inline">Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>

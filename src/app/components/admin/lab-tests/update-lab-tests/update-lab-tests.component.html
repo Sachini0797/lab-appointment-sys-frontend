@@ -1,0 +1,139 @@
+<app-sidebar
+  [isExpanded]="sidebarExpanded"
+  (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+></app-sidebar>
+
+<div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
+    <div class="row justify-content-center">
+        <div class="col-10">
+            <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+                <h2 id="">Create or edit Lab Tests</h2>
+      
+                <div>
+       
+                    <div class="form-group" [hidden]="!editForm.get('id')!.value">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+                    </div>
+                    <div class="row">
+      
+                        <!-- <div class="form-group col-6">
+                            <label class="form-control-label" for="field_testName">Test Name</label>
+                            <input type="text" list="labTestsService" required class="form-control" name="testName" id="field_testName" formControlName="testName" />
+      
+                            <datalist id="labTestsService">
+                                <option *ngFor="let item of labTests" [value]="item.id">{{item.testName}}
+                                </option>
+                            </datalist>
+                        </div> -->
+      
+                        <div class="form-group col">
+                            <label for="testName" class="form-control-label" for="field_testName">Test Name </label>
+                            <input type="text" list="labTestsService" class="form-control" name="testName" id="field_testName" formControlName="testName" />
+      
+      
+                            <!-- <datalist id="labTestsService">
+                                <option *ngFor="let item of labTests" [value]="item.testName">{{item.testName}} </option>
+                               </datalist> -->
+                        </div>
+      
+                        <div class="form-group col">
+                            <label for="testShortName" class="form-control-label" for="field_testShortName">Test Short Name</label>
+                            <input type="text" class="form-control" name="testShortName" id="field_testShortName" formControlName="testShortName" />
+                        </div>
+      
+                        <div class="form-group col">
+                            <label for="testNo" class="form-control-label" for="field_testNo">Test No</label>
+                            <input type="number" class="form-control" name="testNo" id="field_testNo" formControlName="testNo" />
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="form-group col-5">
+                            <label for="doneById" class="form-control-label" for="field_doneById">Done By </label>
+                            <input type="text" list="doneById" class="form-control" name="doneById" id="field_doneById" formControlName="doneById" />
+      
+      
+                            <!-- <datalist id="doneById">
+                                <option *ngFor="let item of stakeHolders" [value]="item.id">{{item.title}} {{item.name}}   </option>
+                               </datalist> -->
+                        </div>
+                        <div class="form-group col-5">
+                            <label for="doneByName" class="form-control-label" for="field_doneByName">Done By Name</label>
+                            <input type="text" readonly class="form-control" name="doneByName" id="field_doneByName" formControlName="doneByName" />
+      
+      
+                        </div> 
+                        <div class="form-group col-2" style="padding-top: 30px;">
+                            <div class="form-check">
+                                <label class="form-control-label" for="field_maritialStatusMarried">In House Test</label>
+                                <input type="checkbox" class="form-check-input" name="inHouse" id="field_in_house" formControlName="inHouse" />
+                            </div>
+          
+                        </div>
+                    </div>
+                    <!-- <div  >
+                      <br>
+                        <div class="form-check">
+                            <label class="form-control-label" for="field_maritialStatusMarried">In House Test</label>
+                            <input type="checkbox" class="form-check-input" name="inHouse" id="field_in_house" formControlName="inHouse" />
+                        </div>
+      
+                    </div> -->
+      
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_amount">Amount</label>
+                        <input type="number" class="form-control" name="amount" id="field_amount" formControlName="amount" />
+                    </div>
+      
+      
+                    <div class="row">
+                        <div class="form-group col">
+                            <label class="form-control-label" for="field_percentage">Percentage (%)</label>
+                            <input type="number" class="form-control" name="Percentage" id="field_percentage" formControlName="percentage" />
+                        </div>
+                        <div class="form-group col">
+                            <label class="form-control-label" for="field_discount">Discount (Rs.)</label>
+                            <input type="number" class="form-control" name="discount" id="field_discount" formControlName="discount" />
+                        </div>
+      
+                    </div>
+      
+      
+      
+      
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_finalAmount">Final Amount</label>
+                        <input type="number" class="form-control" name="finalAmount" id="field_finalAmount" formControlName="finalAmount" />
+                    </div>
+      
+      
+      
+      
+      
+      
+      
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_deliveryPossibleWithinNext">Delivery Possible Within Next</label>
+                        <input type="text" class="form-control" name="deliveryPossibleWithinNext" id="field_delivery_possible_within_next" formControlName="deliveryPossibleWithinNext" />
+                    </div>
+      
+                    <div class="form-group">
+                        <label class="form-control-label" for="field_remarks">Remarks</label>
+                        <input type="text" class="form-control" name="remarks" id="field_remarks" formControlName="remarks" />
+                    </div>
+                </div>
+                <br>
+                <div>
+                    <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+                        ;<span>Cancel</span>
+                    </button>
+      
+                    <button type="submit" id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+                        &nbsp;<span>Save</span>
+                    </button>
+                </div>
+            </form>
+        </div>
+      </div>
+      
+</div>

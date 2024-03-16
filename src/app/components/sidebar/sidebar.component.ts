@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { StorageService } from '../../core/auth/storage.service';
+import { AccountService } from '../../core/auth/account.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,7 +19,12 @@ export class SidebarComponent {
   @Input() showEntities: boolean = false;
   @Input() showDoctor: boolean = false;
 
- 
+  constructor(
+    private storageService: StorageService,
+    private accountService: AccountService,
+    private router: Router
+  ) {}
+
   handleSidebarToggle = () => this.toggleSidebar.emit(!this.isExpanded);
 
   toggleEntities() {
@@ -27,5 +34,17 @@ export class SidebarComponent {
   toggleDoctors() {
     this.showDoctor = !this.showDoctor;
   }
-  
+  logout(): void {
+    this.accountService.logout().subscribe({
+      next: (res) => {
+        console.log(res);
+        this.storageService.clean();
+        // window.location.reload();
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        console.log(err);
+      },
+    });
+  }
 }
