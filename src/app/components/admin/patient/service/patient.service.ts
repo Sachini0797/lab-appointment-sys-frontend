@@ -30,4 +30,16 @@ export class PatientService {
     };
     return this.http.get<any[]>(`${this.apiServerUrl}/user-profiles`, options);
   }
+
+  public deletePatient(id: string): Observable<void> {
+    const headers = this.getHeaders();
+    const responseType = 'json'; // Set your desired response type here
+
+    // Define options for the request
+    const options = {
+      headers: headers,
+      responseType: responseType as 'json', // Cast responseType to avoid compilation errors
+    };
+    return this.http.delete<void>(`${this.apiServerUrl}/user/${id}`, options);
+  }
 }

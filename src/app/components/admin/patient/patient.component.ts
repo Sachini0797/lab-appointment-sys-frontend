@@ -19,6 +19,7 @@ export class PatientComponent implements OnInit {
   sidebarExpanded = true;
   text:String = 'The text';
   public patients: any[]= [];
+  patientID: string = '';
 
   constructor(protected modalService: NgbModal, private patientService: PatientService) {}
   ngOnInit(): void {
@@ -41,10 +42,9 @@ export class PatientComponent implements OnInit {
   //   modalRef.closed;
   // }
 
-  delete() {
+  delete(id: string) {
     // const modalRef = this.modalService.open(ModalComponent);
     const modalRef = this.modalService.open(DeletePatientComponent);
-    modalRef.componentInstance.title = 'About';
-
+    modalRef.componentInstance.id = id;
   }
 }

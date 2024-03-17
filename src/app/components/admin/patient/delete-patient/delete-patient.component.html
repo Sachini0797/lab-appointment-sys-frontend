@@ -1,4 +1,4 @@
-<form  name="deleteForm" (ngSubmit)="confirmDelete()">
+<form  name="deleteForm" >
     <div class="modal-header">
       <h4 class="modal-title" data-cy="userProfileDeleteDialogHeading">Confirm delete operation</h4>
   
@@ -6,7 +6,7 @@
     </div>
   
     <div class="modal-body">
-       <p id="jhi-delete-userProfile-heading">Are you sure you want to delete User Profile ?</p>
+       <p id="jhi-delete-userProfile-heading">Are you sure you want to delete User Profile {{id}}?</p>
     </div>
   
     <div class="modal-footer">
@@ -14,7 +14,7 @@
         &nbsp;<span>Cancel</span>
       </button>
   
-      <button id="jhi-confirm-delete-userProfile" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger">
+      <button id="jhi-confirm-delete-userProfile" data-cy="entityConfirmDeleteButton" type="submit" class="btn btn-danger" (click)="confirmDelete()">
         <span>Delete</span>
       </button>
     </div>
