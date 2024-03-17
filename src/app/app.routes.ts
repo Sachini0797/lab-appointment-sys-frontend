@@ -29,5 +29,5 @@ export const routes: Routes = [
     { path: 'admin/lab-tests-invoice', component: LabTestInvoiceComponent },
     { path: 'admin/lab-tests-invoice/new', component: UpdateLabTestInvoiceComponent },
     { path: 'admin/labtestinvoiceprint', component: LabtestinvoiceprintComponent },
-    { path: 'patient/patient-dashboard', component: PatientDashboardComponent},
+    { path: 'patient/patient-dashboard', component: PatientDashboardComponent, canActivate:[AuthGuard]},
 ];

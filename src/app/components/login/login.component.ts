@@ -89,7 +89,7 @@ export class LoginComponent implements OnInit {
     } else if (roles.includes("ROLE_MODERATOR")) {
       this.router.navigate(['/moderator-dashboard']);
     } else {
-      this.router.navigate(['/user-dashboard']);
+      this.router.navigate(['/patient/patient-dashboard']);
     }
   }
 

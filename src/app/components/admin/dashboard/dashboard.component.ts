@@ -1,9 +1,10 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { AccountService } from '../../../core/auth/account.service';
 import { UserRoleService } from '../../../core/auth/user-role.service';
+import { StorageService } from '../../../core/auth/storage.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -15,10 +16,13 @@ import { UserRoleService } from '../../../core/auth/user-role.service';
 export class DashboardComponent implements OnInit{
   sidebarExpanded = true;
   content?: string;
-  constructor(private userRoleService: UserRoleService) {}
+  constructor(private userRoleService: UserRoleService, private storageService: StorageService, private router: Router) {}
 
   ngOnInit(): void {
-    this.userRoleService.getAdminBoard().subscribe({
+    if(this.storageService.getUser().roles[0] !== "ROLE_ADMIN"){
+      this.router.navigate(['/login']);
+    } 
+     this.userRoleService.getAdminBoard().subscribe({
       next: data => {
         this.content = data;
       },

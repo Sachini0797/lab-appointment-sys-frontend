@@ -39,9 +39,13 @@
       </div>
     </form>
 
-    <!-- <div class="alert alert-warning" id="no-result" *ngIf="userProfiles?.length === 0">
+    <div
+      class="alert alert-warning"
+      id="no-result"
+      *ngIf="patients?.length === 0"
+    >
       <span>No User Profiles found</span>
-    </div> -->
+    </div>
 
     <!-- <div class="table-responsive table-entities" id="entities" *ngIf="userProfiles && userProfiles.length > 0"> -->
     <div class="table-responsive table-entities" id="entities">
@@ -53,26 +57,13 @@
                 <span>ID</span>
               </div>
             </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Auto Id</span>
-              </div>
-            </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Uid</span>
-              </div>
-            </th>
+
             <th scope="col">
               <div class="d-flex">
                 <span>Designation</span>
               </div>
             </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Initials</span>
-              </div>
-            </th>
+
             <th scope="col">
               <div class="d-flex">
                 <span>First Name</span>
@@ -93,11 +84,7 @@
                 <span>Nic</span>
               </div>
             </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Passport No</span>
-              </div>
-            </th>
+
             <th scope="col">
               <div class="d-flex">
                 <span>Email</span>
@@ -108,21 +95,13 @@
                 <span>Phone</span>
               </div>
             </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Phone 2</span>
-              </div>
-            </th>
+
             <th scope="col">
               <div class="d-flex">
                 <span>Address</span>
               </div>
             </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Postal Code</span>
-              </div>
-            </th>
+
             <th scope="col">
               <div class="d-flex">
                 <span>City</span>
@@ -138,46 +117,19 @@
                 <span>Dob</span>
               </div>
             </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Age Or Dob</span>
-              </div>
-            </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Show In Days And Months</span>
-              </div>
-            </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Maritial Status Married</span>
-              </div>
-            </th>
+
             <th scope="col">
               <div class="d-flex">
                 <span>Profession</span>
               </div>
             </th>
+
             <th scope="col">
               <div class="d-flex">
-                <span>Applicants Photograph</span>
+                <span>Registered Date</span>
               </div>
             </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Remarks</span>
-              </div>
-            </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Registered</span>
-              </div>
-            </th>
-            <th scope="col">
-              <div class="d-flex">
-                <span>Connected</span>
-              </div>
-            </th>
+
             <th scope="col">
               <div class="d-flex">
                 <span>Height</span>
@@ -188,42 +140,37 @@
                 <span>Weight</span>
               </div>
             </th>
+            <th scope="col">
+              <div class="d-flex">
+                <span>Actions</span>
+              </div>
+            </th>
             <th scope="col"></th>
           </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let userProfile of userProfiles; trackBy: trackId" data-cy="entityTable"> -->
-          <tr>
-            <td>
-              <!-- <a [routerLink]="['/user-profile', userProfile.id, 'view']">{{ userProfile.id }}</a> -->
-            </td>
-            <td>1</td>
-            <td>u1</td>
-            <td>MS</td>
-            <td>N.H</td>
-            <td>Sachini</td>
-            <td>Madushika</td>
-            <td>Female</td>
-            <td>977666543V</td>
-            <td></td>
-            <td>sachinigmail.com</td>
-            <td>07766554432</td>
-            <td></td>
-            <td>abc</td>
-            <td></td>
-            <td>Kuliyapitiya</td>
-            <td>26</td>
-            <td>1997/07/29</td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td>168</td>
-            <td>47</td>
+          <tr *ngFor="let user of patients" data-cy="entityTable">
+            <!-- <tr> -->
+            <!-- <td>
+              <a [routerLink]="['/user-profile', userProfile.id, 'view']">{{ userProfile.id }}</a>
+            </td> -->
+            <td>{{ user.id }}</td>
+            <td>{{ user.designation }}</td>
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.gender }}</td>
+            <td>{{ user.nic }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phoneNum }}</td>
+            <td>{{ user.address }}</td>
+            <td>{{ user.city }}</td>
+            <td>{{user.age}}</td>
+            <td>{{user.dob}}</td>
+            <td>{{user.profession}}</td>
+            <td>{{user.registeredDate}}</td>
+            <td>{{user.height}}</td>
+            <td>{{user.weight}}</td>
+            
             <td class="text-end">
               <div class="btn-group">
                 <button

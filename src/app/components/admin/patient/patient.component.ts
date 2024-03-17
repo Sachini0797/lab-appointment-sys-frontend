@@ -5,6 +5,8 @@ import { SidebarComponent } from '../../sidebar/sidebar.component';
 import { NgbActiveModal, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 import { filter, switchMap } from 'rxjs';
 import { DeletePatientComponent } from './delete-patient/delete-patient.component';
+import { PatientService } from './service/patient.service';
+import { HttpErrorResponse } from '@angular/common/http';
 
 @Component({
   selector: 'app-patient',
@@ -16,9 +18,21 @@ import { DeletePatientComponent } from './delete-patient/delete-patient.componen
 export class PatientComponent implements OnInit {
   sidebarExpanded = true;
   text:String = 'The text';
+  public patients: any[]= [];
 
-  constructor(protected modalService: NgbModal) {}
-  ngOnInit(): void {}
+  constructor(protected modalService: NgbModal, private patientService: PatientService) {}
+  ngOnInit(): void {
+
+    this.patientService.getPatients().subscribe(
+      (response: any[]) => {
+        this.patients = response;
+        console.log("patients: ",this.patients);
+      },
+      (error: HttpErrorResponse) => {
+        console.log(error.message);
+      }
+    );
+  }
   // delete(): void {
   //   const modalRef = this.modalService.open(DeletePatientComponent, { size: 'lg', backdrop: 'static' });
 
