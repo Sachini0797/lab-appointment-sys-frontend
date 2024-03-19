@@ -41,12 +41,12 @@
       </div>
     </form>
   
-    <!-- <div class="alert alert-warning" id="no-result" *ngIf="labTests?.length === 0">
+    <div class="alert alert-warning" id="no-result" *ngIf="labTests?.length === 0">
       <span>No Lab Tests found</span>
-    </div> -->
+    </div>
   
-    <!-- <div class="table-responsive table-entities" id="entities" *ngIf="labTests && labTests.length > 0"> -->
-    <div class="table-responsive table-entities">
+    <div class="table-responsive table-entities" id="entities" *ngIf="labTests && labTests.length > 0">
+    <!-- <div class="table-responsive table-entities"> -->
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
           <tr>
@@ -70,21 +70,8 @@
                 <span>Test No</span>
                </div>
             </th>
-            <th scope="col" jhiSortBy="doneById">
-              <div class="d-flex">
-                <span>Done By Id</span>
-               </div>
-            </th>
-            <th scope="col" jhiSortBy="doneByName">
-              <div class="d-flex">
-                <span>Done By Name</span>
-               </div>
-            </th>
-            <th scope="col" jhiSortBy="inHouse">
-              <div class="d-flex">
-                <span>In House</span>
-               </div>
-            </th>
+           
+            
             <th scope="col" jhiSortBy="finalAmount">
               <div class="d-flex">
                 <span>Final Amount</span>
@@ -95,11 +82,7 @@
                 <span>Amount</span>
                </div>
             </th>
-            <th scope="col" jhiSortBy="deliveryPossibleWithinNext">
-              <div class="d-flex">
-                <span>Delivery Possible Within Next</span>
-               </div>
-            </th>
+            
             <th scope="col" jhiSortBy="remarks">
               <div class="d-flex">
                 <span>Remarks</span>
@@ -119,24 +102,21 @@
           </tr>
         </thead>
         <tbody>
-          <!-- <tr *ngFor="let labTests of labTests; trackBy: trackId" data-cy="entityTable"> -->
-          <tr>
+          <tr *ngFor="let labTests of labTests;" data-cy="entityTable">
+          <!-- <tr> -->
             <td>
-              id
+              {{labTests.id}} 
               <!-- <a [routerLink]="['/lab-tests', labTests.id, 'view']">{{ labTests.id }}</a> -->
             </td>
-            <td> labTests.testName </td>
-            <td>  labTests.testShortName  </td>
-            <td>  labTests.testNo  </td>
-            <td>  labTests.doneById  </td>
-            <td>  labTests.doneByName  </td>
-            <td>  labTests.inHouse  </td>
-            <td>  labTests.finalAmount  </td>
-            <td>  labTests.amount  </td>
-            <td>  labTests.deliveryPossibleWithinNext  </td>
-            <td>  labTests.remarks  </td>
-            <td>  labTests.percentage  </td>
-            <td>  labTests.discount  </td>
+            <td> {{labTests.testName}} </td>
+            <td>  {{labTests.testShortName}}  </td>
+            <td>  {{labTests.testNo}}  </td>
+             
+            <td>  {{labTests.finalAmount}}  </td>
+            <td>  {{labTests.amount}}  </td>
+             <td>  {{labTests.remarks}}  </td>
+            <td>  {{labTests.percentage}}  </td>
+            <td>  {{labTests.discount}}  </td>
             <td class="text-end">
               <div class="btn-group">
                 <button
