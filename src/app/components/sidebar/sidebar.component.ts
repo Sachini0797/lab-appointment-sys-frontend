@@ -4,11 +4,12 @@ import { Router, RouterModule } from '@angular/router';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { StorageService } from '../../core/auth/storage.service';
 import { AccountService } from '../../core/auth/account.service';
+import { faBars, faCalendarCheck, faFileInvoiceDollar, faFileLines, faFlaskVial, faHome, faHomeUser, faHospitalUser, faLaptopHouse, faRectangleList, faUserDoctor, faUserNurse } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
   standalone: true,
-  imports: [CommonModule, RouterModule, FontAwesomeModule],
+  imports: [CommonModule, RouterModule, FontAwesomeModule, FontAwesomeModule],
   templateUrl: './sidebar.component.html',
   styleUrl: './sidebar.component.scss',
 })
@@ -18,6 +19,18 @@ export class SidebarComponent implements OnInit {
 
   @Input() showEntities: boolean = false;
   @Input() showDoctor: boolean = false;
+
+  fabars = faBars;
+  fahome = faHome;
+  faHomeUser = faHomeUser;
+  faFileLines = faFileLines;
+  fafaRectangleList = faRectangleList;
+  faHospitalUser = faHospitalUser;
+  faUserDoctor = faUserDoctor;
+  faUserNurse = faUserNurse;
+  faCalendarCheck = faCalendarCheck;
+  faFlaskVial = faFlaskVial;
+  faFileInvoiceDollar = faFileInvoiceDollar;
 
   role!: string;
 

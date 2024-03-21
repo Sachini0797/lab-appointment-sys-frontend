@@ -1,0 +1,100 @@
+<app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
+
+<div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
+  <div class="m-5">
+    <h2 id="page-heading" data-cy="AppointmentHeading">
+      <span>Appointments</span>
+
+      <div class="d-flex justify-content-end">
+        <button data-cy="entityCreateButton" class="btn btn-primary" [routerLink]="['/admin/appointment/new']">
+          <span class="hidden-sm-down">Create a new Appointment</span>
+        </button>
+      </div>
+    </h2>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="appointments?.length === 0">
+      <span>No Appointments found</span>
+    </div>
+
+    <div class="table-responsive table-entities" id="entities" *ngIf="appointments && appointments.length > 0">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <th scope="col">
+              <div class="d-flex">
+                <span>ID</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span>Name</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="appointmentDate">
+              <div class="d-flex">
+                <span>Appointment Date</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="startTime">
+              <div class="d-flex">
+                <span>Start Time</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="endTime">
+              <div class="d-flex">
+                <span>End Time</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="user">
+              <div class="d-flex">
+                <span>User</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="doctor">
+              <div class="d-flex">
+                <span>Doctor</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="labTechnician">
+              <div class="d-flex">
+                <span>Lab Technician</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="labTests">
+              <div class="d-flex">
+                <span>Lab Tests</span>
+              </div>
+            </th>
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let appointment of appointments;" data-cy="entityTable">
+            <td>{{ appointment.id }}</td>
+            <td>{{ appointment.name }}</td>
+            <td>{{ appointment.appointmentDate }}</td>
+            <td>{{ appointment.startTime }}</td>
+            <td>{{ appointment.endTime }}</td>
+            <td>{{ appointment.user.id }}</td>
+            <td>{{ appointment.doctor.id }}</td>
+            <td>{{ appointment.labTechnician.id }}</td>
+            <td>{{ appointment.labTests.id }}</td>
+            <td class="text-end">
+              <div class="btn-group">
+                <button type="submit" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                  <span class="d-none d-md-inline">View</span>
+                </button>
+                <button type="submit" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                  <span class="d-none d-md-inline">Edit</span>
+                </button>
+                <button type="submit" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                  <span class="d-none d-md-inline">Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
