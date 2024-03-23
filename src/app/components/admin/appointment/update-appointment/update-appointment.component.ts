@@ -9,6 +9,11 @@ import {
 } from '@angular/forms';
 import { AppointmentService } from '../service/appointment.service';
 import { Appointment } from '../appointment.model';
+import { PatientService } from '../../patient/service/patient.service';
+import { LabTestsService } from '../../lab-tests/service/lab-tests.service';
+import { DoctorService } from '../../doctor/service/doctor.service';
+
+
 
 @Component({
   selector: 'app-update-appointment',
@@ -20,31 +25,56 @@ import { Appointment } from '../appointment.model';
 export class UpdateAppointmentComponent {
   appointmentForm!: FormGroup;
   isSaving: boolean = false;
+  patients!: any[];
+  labTestsList: any[] = [];
+  doctors: any[] =[];
+
  
   constructor(
     private formBuilder: FormBuilder,
-    private appointmentService: AppointmentService
+    private appointmentService: AppointmentService,
+    private patientService: PatientService,
+    private labTestsService: LabTestsService,
+    private doctorService: DoctorService,
   ) {}
 
   ngOnInit(): void {
     this.appointmentForm = this.formBuilder.group({
-      id: [''], // For ID
-      name: [''], // For Patient's Name
-      appointmentDate: [''], // For Appointment Date
-      startTime: [''], // For Start Time
-      endTime: [''], // For End Time
+      id: [''], 
+      name: [''], 
+      appointmentDate: [''], 
+      startTime: [''], 
+      endTime: [''], 
       user: this.formBuilder.group({
-        id: [''] // Assuming user ID is required
+        id: [''],
+        email: [''] 
       }),
       doctor: this.formBuilder.group({
-        id: [''] // Assuming doctor ID is required
+        id: [''] 
       }),
       labTechnician: this.formBuilder.group({
-        id: [''] // Assuming lab technician ID is required
+        id: [''] 
       }),
-      // Form array for lab tests
-      labTests: this.formBuilder.array([]),
+       labTests: this.formBuilder.array([]),
     });
+
+    this.patientService.getPatients().subscribe((res) => {
+      this.patients = res.filter(patient => {
+        return !patient.roles.some((role:any) => role.name === 'ROLE_ADMIN');      
+      })
+      console.log("patients",this.patients);
+    });
+
+    this.labTestsService.getLabTestsa().subscribe((res) => {
+      this.labTestsList = res;
+      console.log("tests", this.labTestsList)
+    });
+
+    this.doctorService.getdoctors().subscribe((res) => {
+      this.doctors = res;
+    })
+
+
   }
 
   // Convenience getter for easy access to form array
@@ -77,9 +107,11 @@ export class UpdateAppointmentComponent {
       console.log(this.appointmentForm.value);
       const appointmentData: Appointment = this.appointmentForm.value;
 
-      const appointment: Appointment = this.appointmentForm.getRawValue();
+      // const appointment: Appointment = this.appointmentForm.getRawValue();
+      // appointment.name = this.appointmentForm.get("name")?.value;
+      console.log(this.appointmentForm.get('name')?.value);
 
-      this.appointmentService.createAppointment(appointment).subscribe(
+      this.appointmentService.createAppointment(appointmentData).subscribe(
         (response) => {
           console.log('Appointment created successfully:', response);
           // Handle success response
@@ -96,5 +128,6 @@ export class UpdateAppointmentComponent {
 
   previousState() {
     // Implement navigation to previous state
+    window.history.back();
   }
 }

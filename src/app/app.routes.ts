@@ -28,18 +28,65 @@ export const routes: Routes = [
     { path: 'register', component: RegisterComponent },
     { path: 'admin/dashboard', component: DashboardComponent, canActivate:[AuthGuard] },
     { path: 'admin/lab-test-menu', component: LabTestMenuComponent },
-    { path: 'admin/patient', component: PatientComponent },
-    { path: 'admin/patient/new', component: UpdateComponent },
-    { path: 'admin/doctor', component: DoctorComponent },
-    { path: 'admin/doctor/new', component: UpdateDoctorComponent },
-    { path: 'admin/technician', component: TechnicianComponent },
-    { path: 'admin/technician/new', component: UpdateTechnicianComponent },
-    { path: 'admin/lab-tests', component: LabTestsComponent },
-    { path: 'admin/lab-tests/new', component: UpdateLabTestsComponent },
-    { path: 'admin/appointment', component: AppointmentComponent },
-    { path: 'admin/appointment/new', component: UpdateAppointmentComponent },
-    { path: 'admin/lab-tests-invoice', component: LabTestInvoiceComponent },
-    { path: 'admin/lab-tests-invoice/new', component: UpdateLabTestInvoiceComponent },
-    { path: 'admin/labtestinvoiceprint', component: LabtestinvoiceprintComponent },
+    
+    {
+      path: 'admin/patient',
+       loadChildren: () => import('./components/admin/patient/patient.routes'),
+  },
+    
+    {
+      path: 'admin/doctor',
+       loadChildren: () => import('./components/admin/doctor/doctor.routes'),
+  },
+  {
+    path: 'admin/technician',
+     loadChildren: () => import('./components/admin/technician/technician.routes'),
+},
+    { path: 'admin/lab-tests', component: LabTestsComponent , canActivate:[AuthGuard]},
+    { path: 'admin/lab-tests/new', component: UpdateLabTestsComponent , canActivate:[AuthGuard]},
+    { path: 'admin/appointment', component: AppointmentComponent , canActivate:[AuthGuard]},
+    { path: 'admin/appointment/new', component: UpdateAppointmentComponent , canActivate:[AuthGuard]},
+    { path: 'admin/lab-tests-invoice', component: LabTestInvoiceComponent , canActivate:[AuthGuard]},
+    { path: 'admin/lab-tests-invoice/new', component: UpdateLabTestInvoiceComponent , canActivate:[AuthGuard]},
+    { path: 'admin/labtestinvoiceprint', component: LabtestinvoiceprintComponent , canActivate:[AuthGuard]},
     { path: 'patient/patient-dashboard', component: PatientDashboardComponent, canActivate:[AuthGuard]},
 ];
+
+
+// export const routes: Routes = [
+//     //redirect to under development component
+//     { path: '', pathMatch: 'full', redirectTo: 'underdev' },
+  
+//     //initial redirect if the main path is empty
+//     // { path: '', pathMatch: 'full', redirectTo: 'home' },
+  
+//     { path: 'underdev', component: UnderDevelopmentComponent },
+  
+//     { path: 'home', component: HomeComponent },
+  
+//     { path: 'aboutus', component: AboutUsComponent },
+  
+//     { path: 'careers', component: CareersComponent },
+  
+//     { path: 'contact', component: ContactComponent },
+  
+//     {
+//       path: 'news',
+//       loadChildren: () =>
+//         import('./pages/news/news.routes').then((m) => m.default),
+//     },
+  
+//     {
+//       path: 'rec-reading',
+//       loadChildren: () =>
+//         import('./pages/rec-reading/rec-reading.routes').then((m) => m.default),
+//     },
+//     // { path: 'services', component: ServicesComponent },
+//     {
+//       path: 'services',
+//       loadChildren: () =>
+//         import('./pages/services/services.routes').then((m) => m.default),
+//     },
+  
+//     { path: 'portfolio', component: PortfolioComponent },
+//   ];

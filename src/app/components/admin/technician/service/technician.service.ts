@@ -4,11 +4,10 @@ import { Observable } from 'rxjs';
 import { StorageService } from '../../../../core/auth/storage.service';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
 export class TechnicianService {
-
-  private apiServerUrl = 'http://localhost:8080/api/admin/doctor';
+  private apiServerUrl = 'http://localhost:8080/api/admin/technician';
 
   constructor(
     private http: HttpClient,
@@ -30,4 +29,5 @@ export class TechnicianService {
       responseType: responseType as 'json', // Cast responseType to avoid compilation errors
     };
     return this.http.get<any[]>(`${this.apiServerUrl}/all`, options);
-  }}
+  }
+}

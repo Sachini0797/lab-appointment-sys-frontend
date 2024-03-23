@@ -1,7 +1,7 @@
 <app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
 
 <div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
-  <div class="m-5">
+  <div class="m-5 card border-0 shadow-lg p-5">
     <h2 id="page-heading" data-cy="AppointmentHeading">
       <span>Appointments</span>
 

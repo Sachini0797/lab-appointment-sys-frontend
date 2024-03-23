@@ -1,0 +1,89 @@
+<app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
+
+<div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
+  <div class="m-5 card border-0 shadow-lg p-5">
+    <h2 id="page-heading" data-cy="DoctorHeading">
+      <span>Lab Technician</span>
+
+      <div class="d-flex justify-content-end">
+        <button data-cy="entityCreateButton" class="btn btn-primary" [routerLink]="['/admin/technician/new']">
+          <span class="hidden-sm-down">Create a new Lab Technician</span>
+        </button>
+      </div>
+    </h2>
+
+    <div class="alert alert-warning" id="no-result" *ngIf="technicians?.length === 0">
+      <span>No Doctors found</span>
+    </div>
+
+<div class="table-responsive table-entities" id="entities" *ngIf="technicians && technicians.length > 0">
+    <table class="table table-striped" aria-describedby="page-heading">
+      <thead>
+        <tr>
+          <th scope="col">
+            <div class="d-flex">
+              <span>ID</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex">
+              <span>Name</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex">
+              <span>Contact Number</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex">
+              <span>Email</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex">
+              <span>Specialization</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex">
+              <span>Working Start Time</span>
+            </div>
+          </th>
+          <th scope="col">
+            <div class="d-flex">
+              <span>Working End Time</span>
+            </div>
+          </th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let technician of technicians;" data-cy="entityTable">
+          <td>{{ technician.id }}</td>
+          <td>{{ technician.name }}</td>
+          <td>{{ technician.contactNumber }}</td>
+          <td>{{ technician.email }}</td>
+          <td>{{ technician.specialization }}</td>
+          <td>{{ technician.workingStartTime }}</td>
+          <td>{{ technician.workingEndTime }}</td>
+          <td class="text-end">
+            <div class="btn-group">
+              <button type="submit" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <span class="d-none d-md-inline">View</span>
+              </button>
+              <button type="submit" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <span class="d-none d-md-inline">Edit</span>
+              </button>
+              <button type="submit" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <span class="d-none d-md-inline">Delete</span>
+              </button>
+            </div>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+  

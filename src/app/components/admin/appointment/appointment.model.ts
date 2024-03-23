@@ -1,5 +1,5 @@
 export interface Appointment {
-    id: number;
+    id?: number;
     name: string;
     appointmentDate: Date; // Assuming you're using Date objects for dates
     startTime: Date;

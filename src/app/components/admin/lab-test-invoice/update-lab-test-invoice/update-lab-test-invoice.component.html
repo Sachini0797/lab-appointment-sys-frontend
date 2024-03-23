@@ -6,420 +6,421 @@
 <div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
 <div class="row justify-content-center" style="margin: 30px;">
     <div class="col-12">
-      <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
-        <h2 id="jhi-lab-test-invoice-heading" style="padding: 30px;">Create or edit Lab Test Invoice</h2>
-  
-        <div>
-   
-          <div class="form-group" [hidden]="!editForm.get('id')!.value">
-            <label for="id">ID</label>
-            <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
-          </div>
-  
-          
-  
-          <div class="row" #scrollToTop>
-  
-            <div class="col-5">
-              <div class="form-group">
-                <div class="row align-items-end">
-                  <div class="form-group col">
-                    <label class="form-control-label" for="field_patients">Search Patient </label>
-                    <input
-                      style="background-color: rgb(226, 190, 226)"
-                      list="userProfileService"
-                      type="text"
-                      class="form-control"
-                      name="patients"
-                      id="field_patients"
-                      formControlName="patients"
-                    />
-  
-                    <!-- <datalist id="userProfileService">
-                      <option *ngFor="let item of pateints" [value]="item.firstName">
-                        {{ item.initials }}
-                        {{ item.firstName }}
-                        {{ item.lastName }} {{ item.nic }} | {{ item.passportNo }} {{ item.address }} | {{ item.city }} {{ item.phone }}
-                      </option>
-                    </datalist> -->
-                    <br />
-                    <label class="form-control-label" for="field_medicalCentre">Patient/user Name: </label>
-                    <!-- <small style="font-size: 15px; background-color: rgb(226, 190, 226)"> {{ pateintName }}</small> -->
-                    <small style="font-size: 15px; background-color: rgb(226, 190, 226)"></small>
-                    <br />
-                    <label class="form-control-label" for="field_medicalCentre">Patient/user ID: </label>
-                    <small style="font-size: 15px; background-color: rgb(226, 190, 226)"> {{ editForm.get(['userID'])?.value }}</small>
+      <div class="card border-0 shadow-lg mt-5 p-5">
+
+        <form name="editForm" role="form" novalidate (ngSubmit)="save()" [formGroup]="editForm">
+          <h2 id="jhi-lab-test-invoice-heading" style="padding: 30px;">Create or edit Lab Test Invoice</h2>
+    
+          <div>
+     
+            <div class="form-group" [hidden]="!editForm.get('id')!.value">
+              <label for="id">ID</label>
+              <input type="text" class="form-control" id="id" name="id" formControlName="id" readonly />
+            </div>
+    
+            
+    
+            <div class="row" #scrollToTop>
+    
+              <div class="col-5">
+                <div class="form-group">
+                  <div class="row align-items-end">
+                    <div class="form-group col">
+                      <label class="form-control-label" for="field_patients">Search Patient </label>
+                      <input
+                        style="background-color: rgb(226, 190, 226)"
+                        list="userProfileService"
+                        type="text"
+                        class="form-control"
+                        name="patients"
+                        id="field_patients"
+                        formControlName="patients"
+                      />
+    
+                      <!-- <datalist id="userProfileService">
+                        <option *ngFor="let item of pateints" [value]="item.firstName">
+                          {{ item.initials }}
+                          {{ item.firstName }}
+                          {{ item.lastName }} {{ item.nic }} | {{ item.passportNo }} {{ item.address }} | {{ item.city }} {{ item.phone }}
+                        </option>
+                      </datalist> -->
+                      <br />
+                      <label class="form-control-label" for="field_medicalCentre">Patient/user Name: </label>
+                      <!-- <small style="font-size: 15px; background-color: rgb(226, 190, 226)"> {{ pateintName }}</small> -->
+                      <small style="font-size: 15px; background-color: rgb(226, 190, 226)"></small>
+                      <br />
+                      <label class="form-control-label" for="field_medicalCentre">Patient/user ID: </label>
+                      <small style="font-size: 15px; background-color: rgb(226, 190, 226)"> {{ editForm.get(['userID'])?.value }}</small>
+                    </div>
                   </div>
                 </div>
               </div>
+    
+              
+             
             </div>
-  
-            
-           
-          </div>
-  
-          <div class="form-Check" style="padding-bottom: 10px">
-            <label class="form-control-label" for="field_ecg"
-              >ECG Reciept <input type="checkbox" class="form-Check-Input" name="ecg" id="field_ecg" formControlName="ecg"
-            /></label>
-          </div>
-  
-          <div class="row">
-            <div class="form-group col">
-              <label class="form-control-label" for="field_doctorName">Doctor Name </label>
-              <input
-                list="doctors"
-                required
-                type="text"
-                class="form-control"
-                name="doctorName"
-                id="field_doctorName"
-                formControlName="doctorName"
-              />
-  
-              <!-- <datalist id="doctors">
-                <option *ngFor="let item of doctorsArray" [value]="item.name!">
-                  {{ item.position }} {{ item.designation }}.{{ item.name }}
-                </option>
-              </datalist> -->
+    
+            <div class="form-Check" style="padding-bottom: 10px">
+              <label class="form-control-label" for="field_ecg"
+                >ECG Reciept <input type="checkbox" class="form-Check-Input" name="ecg" id="field_ecg" formControlName="ecg"
+              /></label>
             </div>
-  
-            <div class="form-group col">
-              <label class="form-control-label" for="field_position">Position</label>
-              <input type="text" readonly class="form-control" name="position" id="field_position" formControlName="position" />
-            </div>
-            <div class="form-group col-2">
-              <label class="form-control-label" for="field_doctorID">Doctor Id</label>
-              <input type="text" readonly class="form-control" required name="doctorID" id="field_doctorID" formControlName="doctorID" />
-            </div>
-          </div>
-  
-          <div class="row">
-            <div class="form-group col">
-              <label class="form-control-label" for="field_refNo">Ref No</label>
-              <input type="number" class="form-control" name="refNo" id="field_refNo" formControlName="refNo" />
-            </div>
-  
-            <div class="form-group col">
-              <label class="form-control-label" for="field_dateCreated">Date Created</label>
-              <div class="d-flex">
+    
+            <div class="row">
+              <div class="form-group col">
+                <label class="form-control-label" for="field_doctorName">Doctor Name </label>
                 <input
-                  id="field_dateCreated"
-                  type="datetime-local"
+                  list="doctors"
+                  required
+                  type="text"
                   class="form-control"
-                  name="dateCreated"
-                  formControlName="dateCreated"
-                  placeholder="YYYY-MM-DD HH:mm"
+                  name="doctorName"
+                  id="field_doctorName"
+                  formControlName="doctorName"
                 />
+    
+                <!-- <datalist id="doctors">
+                  <option *ngFor="let item of doctorsArray" [value]="item.name!">
+                    {{ item.position }} {{ item.designation }}.{{ item.name }}
+                  </option>
+                </datalist> -->
+              </div>
+    
+              <div class="form-group col">
+                <label class="form-control-label" for="field_position">Position</label>
+                <input type="text" readonly class="form-control" name="position" id="field_position" formControlName="position" />
+              </div>
+              <div class="form-group col-2">
+                <label class="form-control-label" for="field_doctorID">Doctor Id</label>
+                <input type="text" readonly class="form-control" required name="doctorID" id="field_doctorID" formControlName="doctorID" />
               </div>
             </div>
-           
-          </div>
-  
-          <hr />
-          <div class="row">
-            <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3" >
-              <label class="form-control-label" for="field_description1">Test ID 1 : </label>
-              <input
-                type="text"
-                list="des1"
-                class="form-control"
-                name="description1"
-                id="field_description1"
-                formControlName="description1"
-              />
-              <!-- <datalist id="des1">
-                <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
-              </datalist> -->
+    
+            <div class="row">
+              <div class="form-group col">
+                <label class="form-control-label" for="field_refNo">Ref No</label>
+                <input type="number" class="form-control" name="refNo" id="field_refNo" formControlName="refNo" />
+              </div>
+    
+              <div class="form-group col">
+                <label class="form-control-label" for="field_dateCreated">Date Created</label>
+                <div class="d-flex">
+                  <input
+                    id="field_dateCreated"
+                    type="datetime-local"
+                    class="form-control"
+                    name="dateCreated"
+                    formControlName="dateCreated"
+                    placeholder="YYYY-MM-DD HH:mm"
+                  />
+                </div>
+              </div>
+             
             </div>
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2">
-              <label class="form-control-label" for="field_testNo1">Test No 1 : </label>
-              <input type="text" class="form-control" name="testNo1" id="field_testNo1" formControlName="testNo1" />
-            </div>
-  
-            <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3">
-              <label class="form-control-label" for="field_test1">Test Name 1 : </label>
-              <input
-                type="text"
-                class="form-control"
-                style="background-color: lightblue; font-weight: bold"
-                name="test1"
-                id="field_test1"
+    
+            <hr />
+            <div class="row">
+              <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3" >
+                <label class="form-control-label" for="field_description1">Test ID 1 : </label>
+                <input
+                  type="text"
+                  list="des1"
+                  class="form-control"
+                  name="description1"
+                  id="field_description1"
+                  formControlName="description1"
                 />
-                <!-- [(ngModel)]="des1.testName"
-                [ngModelOptions]="{ standalone: true }" -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2" >
-              <label class="form-control-label" for="field_amount2">Amount 1 : </label>
-              <input type="number" class="form-control" name="amount1" id="field_amount1" formControlName="amount1" />
-            </div>
-
-          
-  
-            <button type="button" (click)="reset1()" class="btn btn-outline-danger col-1">RESET</button>
-  
-            <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3">
-              <label class="form-control-label" for="field_description2">Test ID 2 : </label>
-              <input
-                type="text"
-                list="des2"
-                class="form-control"
-                name="description2"
-                id="field_description2"
-                formControlName="description2"
-              />
-              <!-- <datalist id="des2">
-                <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
-              </datalist> -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2" >
-              <label class="form-control-label" for="field_testNo2">Test No 2 :</label>
-              <input type="text" class="form-control" name="testNo2" id="field_testNo2" formControlName="testNo2" />
-            </div>
-  
-            <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3">
-              <label class="form-control-label" for="field_test2">Test Name 2 : </label>
-              <input
-                type="text"
-                class="form-control"
-                style="background-color: lightblue; font-weight: bold"
-                name="test2"
-                id="field_test2"
-                />
-                <!-- [(ngModel)]="des2.testName"
-                [ngModelOptions]="{ standalone: true }" -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2" >
-              <label class="form-control-label" for="field_amount2">Amount 2 : </label>
-              <input type="number" class="form-control" name="amount2" id="field_amount2" formControlName="amount2" />
-            </div>
-  
-           
-  
-           
-  
-            <!-- <button type="button" (click)="reset2()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
-            <button type="button" (click)="reset2()" class="btn btn-outline-danger col-1" >RESET</button>
-  
-            <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3" >
-              <label class="form-control-label" for="field_description3">Test ID 3 : </label>
-              <input
-                type="text"
-                class="form-control"
-                list="des3"
-                name="description3"
-                id="field_description3"
-                formControlName="description3"
-              />
-  
-              <!-- <datalist id="des3">
-                <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
-              </datalist> -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2">
-              <label class="form-control-label" for="field_testNo3">Test No 3 : </label>
-              <input type="text" class="form-control" name="testNo3" id="field_testNo3" formControlName="testNo3" />
-            </div>
-  
-            <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3" >
-              <label class="form-control-label" for="field_test3">Test Name 3 : </label>
-              <input
-                type="text"
-                class="form-control"
-                style="background-color: lightblue; font-weight: bold"
-                name="test3"
-                id="field_test3"
-                />
-                <!-- [(ngModel)]="des3.testName"
-                [ngModelOptions]="{ standalone: true }" -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2">
-              <label class="form-control-label" for="field_amount3">Amount 3 : </label>
-              <input type="number" class="form-control" name="amount3" id="field_amount3" formControlName="amount3" />
-            </div>
-  
-           
-  
-         
-            
-            
-  
-            <!-- <button type="button" (click)="reset3()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
-            <button type="button" (click)="reset3()" class="btn btn-outline-danger col-1" >RESET</button>
-  
-            <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3" >
-              <label class="form-control-label" for="field_description4">Test ID 4 : </label>
-              <input
-                type="text"
-                class="form-control"
-                list="des4"
-                name="description4"
-                id="field_description4"
-                formControlName="description4"
-              />
-  
-              <!-- <datalist id="des4">
-                <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
-              </datalist> -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2" >
-              <label class="form-control-label" for="field_testNo4">Test No 4 : </label>
-              <input type="text" class="form-control" name="testNo4" id="field_testNo4" formControlName="testNo4" />
-            </div>
-  
-            <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3" >
-              <label class="form-control-label" for="field_test4">Test Name 4 : </label>
-              <input
-                type="text"
-                class="form-control"
-                style="background-color: lightblue; font-weight: bold"
-                name="test4"
-                id="field_test4"
-                />
-                <!-- [(ngModel)]="des4.testName"
-                [ngModelOptions]="{ standalone: true }" -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2" >
-              <label class="form-control-label" for="field_amount4">Amount 4 : </label>
-              <input type="number" class="form-control" name="amount4" id="field_amount4" formControlName="amount4" />
-            </div>
+                <!-- <datalist id="des1">
+                  <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
+                </datalist> -->
+              </div>
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2">
+                <label class="form-control-label" for="field_testNo1">Test No 1 : </label>
+                <input type="text" class="form-control" name="testNo1" id="field_testNo1" formControlName="testNo1" />
+              </div>
+    
+              <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3">
+                <label class="form-control-label" for="field_test1">Test Name 1 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  style="background-color: lightblue; font-weight: bold"
+                  name="test1"
+                  id="field_test1"
+                  />
+                  <!-- [(ngModel)]="des1.testName"
+                  [ngModelOptions]="{ standalone: true }" -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2" >
+                <label class="form-control-label" for="field_amount2">Amount 1 : </label>
+                <input type="number" class="form-control" name="amount1" id="field_amount1" formControlName="amount1" />
+              </div>
   
             
-           
-            <!-- <button type="button" (click)="reset4()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
-            <button type="button" (click)="reset4()" class="btn btn-outline-danger col-1">RESET</button>
-  
-            <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3">
-              <label class="form-control-label" for="field_description5">Test ID 5 : </label>
-              <input
-                type="text"
-                class="form-control"
-                list="des5"
-                name="description5"
-                id="field_description5"
-                formControlName="description5"
-              />
-  
-              <!-- <datalist id="des5">
-                <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
-              </datalist> -->
-            </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2">
-              <label class="form-control-label" for="field_testNo5">Test No 5 : </label>
-              <input type="text" class="form-control" name="testNo5" id="field_testNo5" formControlName="testNo5" />
-            </div>
-  
-            <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-3" >
-              <label class="form-control-label" for="field_test5">Test Name 5 : </label>
-              <input
-                type="text"
-                class="form-control"
-                style="background-color: lightblue; font-weight: bold"
-                name="test5"
-                id="field_test5"
+    
+              <button type="button" (click)="reset1()" class="btn btn-outline-danger col-1">RESET</button>
+    
+              <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3">
+                <label class="form-control-label" for="field_description2">Test ID 2 : </label>
+                <input
+                  type="text"
+                  list="des2"
+                  class="form-control"
+                  name="description2"
+                  id="field_description2"
+                  formControlName="description2"
                 />
-                <!-- [(ngModel)]="des5.testName"
-                [ngModelOptions]="{ standalone: true }" -->
+                <!-- <datalist id="des2">
+                  <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
+                </datalist> -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2" >
+                <label class="form-control-label" for="field_testNo2">Test No 2 :</label>
+                <input type="text" class="form-control" name="testNo2" id="field_testNo2" formControlName="testNo2" />
+              </div>
+    
+              <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3">
+                <label class="form-control-label" for="field_test2">Test Name 2 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  style="background-color: lightblue; font-weight: bold"
+                  name="test2"
+                  id="field_test2"
+                  />
+                  <!-- [(ngModel)]="des2.testName"
+                  [ngModelOptions]="{ standalone: true }" -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2" >
+                <label class="form-control-label" for="field_amount2">Amount 2 : </label>
+                <input type="number" class="form-control" name="amount2" id="field_amount2" formControlName="amount2" />
+              </div>
+    
+             
+    
+             
+    
+              <!-- <button type="button" (click)="reset2()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
+              <button type="button" (click)="reset2()" class="btn btn-outline-danger col-1" >RESET</button>
+    
+              <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3" >
+                <label class="form-control-label" for="field_description3">Test ID 3 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  list="des3"
+                  name="description3"
+                  id="field_description3"
+                  formControlName="description3"
+                />
+    
+                <!-- <datalist id="des3">
+                  <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
+                </datalist> -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2">
+                <label class="form-control-label" for="field_testNo3">Test No 3 : </label>
+                <input type="text" class="form-control" name="testNo3" id="field_testNo3" formControlName="testNo3" />
+              </div>
+    
+              <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3" >
+                <label class="form-control-label" for="field_test3">Test Name 3 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  style="background-color: lightblue; font-weight: bold"
+                  name="test3"
+                  id="field_test3"
+                  />
+                  <!-- [(ngModel)]="des3.testName"
+                  [ngModelOptions]="{ standalone: true }" -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2">
+                <label class="form-control-label" for="field_amount3">Amount 3 : </label>
+                <input type="number" class="form-control" name="amount3" id="field_amount3" formControlName="amount3" />
+              </div>
+    
+             
+    
+           
+              
+              
+    
+              <!-- <button type="button" (click)="reset3()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
+              <button type="button" (click)="reset3()" class="btn btn-outline-danger col-1" >RESET</button>
+    
+              <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3" >
+                <label class="form-control-label" for="field_description4">Test ID 4 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  list="des4"
+                  name="description4"
+                  id="field_description4"
+                  formControlName="description4"
+                />
+    
+                <!-- <datalist id="des4">
+                  <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
+                </datalist> -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2" >
+                <label class="form-control-label" for="field_testNo4">Test No 4 : </label>
+                <input type="text" class="form-control" name="testNo4" id="field_testNo4" formControlName="testNo4" />
+              </div>
+    
+              <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3" >
+                <label class="form-control-label" for="field_test4">Test Name 4 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  style="background-color: lightblue; font-weight: bold"
+                  name="test4"
+                  id="field_test4"
+                  />
+                  <!-- [(ngModel)]="des4.testName"
+                  [ngModelOptions]="{ standalone: true }" -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2" >
+                <label class="form-control-label" for="field_amount4">Amount 4 : </label>
+                <input type="number" class="form-control" name="amount4" id="field_amount4" formControlName="amount4" />
+              </div>
+    
+              
+             
+              <!-- <button type="button" (click)="reset4()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
+              <button type="button" (click)="reset4()" class="btn btn-outline-danger col-1">RESET</button>
+    
+              <!-- <div class="form-group col-2" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3">
+                <label class="form-control-label" for="field_description5">Test ID 5 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  list="des5"
+                  name="description5"
+                  id="field_description5"
+                  formControlName="description5"
+                />
+    
+                <!-- <datalist id="des5">
+                  <option *ngFor="let item of labtests" [value]="item.id">{{ item.testNo }} {{ item.testName }} {{ item.doneByName }}</option>
+                </datalist> -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2">
+                <label class="form-control-label" for="field_testNo5">Test No 5 : </label>
+                <input type="text" class="form-control" name="testNo5" id="field_testNo5" formControlName="testNo5" />
+              </div>
+    
+              <!-- <div class="form-group col-3" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-3" >
+                <label class="form-control-label" for="field_test5">Test Name 5 : </label>
+                <input
+                  type="text"
+                  class="form-control"
+                  style="background-color: lightblue; font-weight: bold"
+                  name="test5"
+                  id="field_test5"
+                  />
+                  <!-- [(ngModel)]="des5.testName"
+                  [ngModelOptions]="{ standalone: true }" -->
+              </div>
+    
+              <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
+              <div class="form-group col-2">
+                <label class="form-control-label" for="field_amount5">Amount 5 : </label>
+                <input type="number" class="form-control" name="amount5" id="field_amount5" formControlName="amount5" />
+              </div>
+    
+              
+    
+              <!-- <button type="button" (click)="reset5()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
+              <button type="button" (click)="reset5()" class="btn btn-outline-danger col-1">RESET</button>
             </div>
-  
-            <!-- <div class="form-group col-1" *ngIf="!editForm.get(['ecg'])!.value"> -->
-            <div class="form-group col-2">
-              <label class="form-control-label" for="field_amount5">Amount 5 : </label>
-              <input type="number" class="form-control" name="amount5" id="field_amount5" formControlName="amount5" />
+            <hr />
+    
+            <div class="row">
+    
+              <div class="form-group col-6">
+                <label class="form-control-label" for="field_billAmmount">Bill Amount</label>
+                <input type="number" class="form-control" name="billAmmount" id="field_billAmmount" formControlName="billAmmount" />
+              </div>
+    
+              <div class="form-group col-6">
+                <label class="form-control-label" for="field_discount">Discount</label>
+                <input type="number" list="discountlist" class="form-control" name="discount" id="field_discount" formControlName="discount" />
+    
+                <datalist id="discountlist">
+                  <option value="0">0% off</option>
+                  <option value="5">5% off</option>
+                  <option value="10">10% off</option>
+                  <option value="15">15% off</option>
+                  <option value="20">20% off</option>
+                  <option value="25">25% off</option>
+                  <option value="30">30% off</option>
+                  <option value="100">100% off</option>
+                </datalist>
+              </div>
+    
+              <div class="form-group col-6">
+                <label class="form-control-label" for="field_totalAmount">Total Amount</label>
+                <input readonly type="number" class="form-control" name="totalAmount" id="field_totalAmount" formControlName="totalAmount" />
+              </div>
+    
+              <div class="form-group col-6">
+                <label class="form-control-label" for="field_paidAmount">Paid Amount</label>
+                <input type="number" class="form-control" name="paidAmount" id="field_paidAmount" formControlName="paidAmount" />
+              </div>
+    
+              <div class="form-group col-6">
+                <label class="form-control-label" for="field_dueAmount">Due Amount</label>
+                <input readonly type="number" class="form-control" name="dueAmount" id="field_dueAmount" formControlName="dueAmount" />
+              </div>
             </div>
-  
-            
-  
-            <!-- <button type="button" (click)="reset5()" class="btn btn-outline-danger col-1" *ngIf="!editForm.get(['ecg'])!.value">RESET</button> -->
-            <button type="button" (click)="reset5()" class="btn btn-outline-danger col-1">RESET</button>
+    
+            <div class="form-group">
+              <label class="form-control-label" for="field_remarks">Remarks</label>
+              <input type="text" class="form-control" name="remarks" id="field_remarks" formControlName="remarks" />
+            </div>
           </div>
-          <hr />
-  
-          <div class="row">
-  
-            <div class="form-group col-6">
-              <label class="form-control-label" for="field_billAmmount">Bill Amount</label>
-              <input type="number" class="form-control" name="billAmmount" id="field_billAmmount" formControlName="billAmmount" />
-            </div>
-  
-            <div class="form-group col-6">
-              <label class="form-control-label" for="field_discount">Discount</label>
-              <input type="number" list="discountlist" class="form-control" name="discount" id="field_discount" formControlName="discount" />
-  
-              <datalist id="discountlist">
-                <option value="0">0% off</option>
-                <option value="5">5% off</option>
-                <option value="10">10% off</option>
-                <option value="15">15% off</option>
-                <option value="20">20% off</option>
-                <option value="25">25% off</option>
-                <option value="30">30% off</option>
-                <option value="100">100% off</option>
-              </datalist>
-            </div>
-  
-            <div class="form-group col-6">
-              <label class="form-control-label" for="field_totalAmount">Total Amount</label>
-              <input readonly type="number" class="form-control" name="totalAmount" id="field_totalAmount" formControlName="totalAmount" />
-            </div>
-  
-            <div class="form-group col-6">
-              <label class="form-control-label" for="field_paidAmount">Paid Amount</label>
-              <input type="number" class="form-control" name="paidAmount" id="field_paidAmount" formControlName="paidAmount" />
-            </div>
-  
-            <div class="form-group col-6">
-              <label class="form-control-label" for="field_dueAmount">Due Amount</label>
-              <input readonly type="number" class="form-control" name="dueAmount" id="field_dueAmount" formControlName="dueAmount" />
-            </div>
+    
+          <div>
+            <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
+              &nbsp;<span>Cancel</span>
+            </button>
+    
+            <button type="submit" #saveRow id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
+              &nbsp;<span>Save</span>
+            </button>
           </div>
-  
-          <div class="form-group">
-            <label class="form-control-label" for="field_remarks">Remarks</label>
-            <input type="text" class="form-control" name="remarks" id="field_remarks" formControlName="remarks" />
-          </div>
-        </div>
-  
-        <div>
-          <button type="button" id="cancel-save" class="btn btn-secondary" (click)="previousState()">
-            &nbsp;<span>Cancel</span>
-          </button>
-  
-          <button type="submit" #saveRow id="save-entity" [disabled]="editForm.invalid || isSaving" class="btn btn-primary">
-            &nbsp;<span>Save</span>
-          </button>
-        </div>
-      </form>
-      <!--
-  
-         -->
+        </form>
+      </div>
+    
   
       <br /><br />
       <div>
