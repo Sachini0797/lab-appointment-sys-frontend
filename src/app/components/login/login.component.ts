@@ -4,26 +4,25 @@ import { RegisterService } from '../register/register.service';
 import { StorageService } from '../../core/auth/storage.service';
 import { LoginService } from './login.service';
 import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
 import {
   FormBuilder,
   FormGroup,
   FormsModule,
   ReactiveFormsModule,
   UntypedFormBuilder,
+  
 } from '@angular/forms';
 import { UserRoleService } from '../../core/auth/user-role.service';
+import {MatSnackBar, MatSnackBarModule} from '@angular/material/snack-bar';
 
+import {MatProgressBarModule} from '@angular/material/progress-bar';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [
-    CommonModule,
-    RouterModule,
-    FormsModule,
-    HttpClientModule,
-    ReactiveFormsModule,
-  ],
+  imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule, MatSnackBarModule, 
+    MatProgressBarModule,
+    MatProgressSpinnerModule,],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
@@ -40,7 +39,8 @@ export class LoginComponent implements OnInit {
     private storageService: StorageService,
     private router: Router,
     private _formbuilder: UntypedFormBuilder,
-    private userRole: UserRoleService
+    private userRole: UserRoleService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit(): void {
@@ -71,22 +71,24 @@ export class LoginComponent implements OnInit {
         // this.reloadPage();
         console.log('Received token:', data.token);
         this.storageService.saveBearerToken(data.token);
+        this.openSnackBar("Login Successfull", 'Ok', 2000);
         this.redirectToDashboard(this.roles);
       },
 
       error: (err) => {
-        this.errorMessage = err.error.message;
+        this.errorMessage = err.error;
+        console.log(err.error);
         this.isLoginFailed = true;
+        this.openSnackBar(this.errorMessage, 'Ok', 2000);
       },
     });
   }
 
   private redirectToDashboard(roles: string[]): void {
-    
     // Redirect based on role
-    if (roles.includes("ROLE_ADMIN")) {
+    if (roles.includes('ROLE_ADMIN')) {
       this.router.navigate(['/admin/dashboard']);
-    } else if (roles.includes("ROLE_MODERATOR")) {
+    } else if (roles.includes('ROLE_MODERATOR')) {
       this.router.navigate(['/moderator-dashboard']);
     } else {
       this.router.navigate(['/patient/patient-dashboard']);
@@ -95,5 +97,11 @@ export class LoginComponent implements OnInit {
 
   reloadPage(): void {
     window.location.reload();
+  }
+
+  openSnackBar(message: string, action: string, duration: number) {
+    this.snackBar.open(message, action, {
+      duration: duration,
+     });
   }
 }

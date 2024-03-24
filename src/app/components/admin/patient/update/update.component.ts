@@ -21,6 +21,8 @@ import { RegisterService } from '../../../register/register.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PatientService } from '../service/patient.service';
 import { User } from '../patient.model';
+import { SnackBarComponent } from '../../../common/snack-bar/snack-bar.component';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update',
@@ -55,7 +57,8 @@ export class UpdateComponent implements OnInit {
     private registerService: RegisterService,
     private router: Router,
     private activatedRouter: ActivatedRoute,
-    private patientService: PatientService
+    private patientService: PatientService,
+    private snackBar: MatSnackBar
   ) {}
   ngOnInit(): void {
     this.editForm = this.formBuilder.group({
@@ -82,7 +85,7 @@ export class UpdateComponent implements OnInit {
 
     const id = this.activatedRouter.snapshot.params['id'];
     console.log('id', id);
-  
+
     if (id === 'create') {
       // Handle the case where a new patient needs to be registered
       this.handleNewPatientRegistration();
@@ -141,11 +144,14 @@ export class UpdateComponent implements OnInit {
           console.log(data);
           this.isSuccessful = true;
           this.isSignedUpFailed = false;
+          this.openSnackBar('updated Successfully', 'OK', 2500);
           if (this.isSuccessful) {
             this.router.navigate(['/admin/patient']);
           }
         },
         error: (err) => {
+          this.openSnackBar(err.error, 'OK', 2500);
+          console.log(err);
           this.errorMessage = err.error.message;
           this.isSignedUpFailed = false;
         },
@@ -194,12 +200,16 @@ export class UpdateComponent implements OnInit {
             console.log(data);
             this.isSuccessful = true;
             this.isSignedUpFailed = false;
+
             if (this.isSuccessful) {
-              alert('Registration Successful!');
+              // alert('Registration Successful!');
+              this.openSnackBar('Registration Successful', 'OK', 2500);
               this.router.navigate(['/admin/patient']);
             }
           },
           error: (err) => {
+            this.openSnackBar(err.error.message, 'OK', 2500);
+            console.log(this.errorMessage);
             this.errorMessage = err.error.message;
             this.isSignedUpFailed = false;
           },
@@ -209,5 +219,10 @@ export class UpdateComponent implements OnInit {
 
   previousState() {
     window.history.back();
+  }
+  openSnackBar(message: string, action: string, duration: number) {
+    this.snackBar.open(message, action, {
+      duration: duration,
+    });
   }
 }

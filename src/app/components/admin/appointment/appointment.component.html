@@ -1,4 +1,7 @@
-<app-sidebar [isExpanded]="sidebarExpanded" (toggleSidebar)="sidebarExpanded = !sidebarExpanded"></app-sidebar>
+<app-sidebar
+  [isExpanded]="sidebarExpanded"
+  (toggleSidebar)="sidebarExpanded = !sidebarExpanded"
+></app-sidebar>
 
 <div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
   <div class="m-5 card border-0 shadow-lg p-5">
@@ -6,17 +9,29 @@
       <span>Appointments</span>
 
       <div class="d-flex justify-content-end">
-        <button data-cy="entityCreateButton" class="btn btn-primary" [routerLink]="['/admin/appointment/new']">
+        <button
+          data-cy="entityCreateButton"
+          class="btn btn-primary"
+          [routerLink]="['/admin/appointment/new']"
+        >
           <span class="hidden-sm-down">Create a new Appointment</span>
         </button>
       </div>
     </h2>
 
-    <div class="alert alert-warning" id="no-result" *ngIf="appointments?.length === 0">
+    <div
+      class="alert alert-warning"
+      id="no-result"
+      *ngIf="appointments?.length === 0"
+    >
       <span>No Appointments found</span>
     </div>
 
-    <div class="table-responsive table-entities" id="entities" *ngIf="appointments && appointments.length > 0">
+    <div
+      class="table-responsive table-entities"
+      id="entities"
+      *ngIf="appointments && appointments.length > 0"
+    >
       <table class="table table-striped" aria-describedby="page-heading">
         <thead>
           <tr>
@@ -69,7 +84,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let appointment of appointments;" data-cy="entityTable">
+          <tr *ngFor="let appointment of appointments" data-cy="entityTable">
             <td>{{ appointment.id }}</td>
             <td>{{ appointment.name }}</td>
             <td>{{ appointment.appointmentDate }}</td>
@@ -81,13 +96,26 @@
             <td>{{ appointment.labTests.id }}</td>
             <td class="text-end">
               <div class="btn-group">
-                <button type="submit" class="btn btn-info btn-sm" data-cy="entityDetailsButton">
+                <button
+                  type="submit"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                >
                   <span class="d-none d-md-inline">View</span>
                 </button>
-                <button type="submit" class="btn btn-primary btn-sm" data-cy="entityEditButton">
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
                   <span class="d-none d-md-inline">Edit</span>
                 </button>
-                <button type="submit" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <button
+                  type="submit"
+                  class="btn btn-danger btn-sm"
+                  data-cy="entityDeleteButton"
+                  (click)="delete(appointment.id)"
+                >
                   <span class="d-none d-md-inline">Delete</span>
                 </button>
               </div>

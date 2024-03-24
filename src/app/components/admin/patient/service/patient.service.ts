@@ -2,7 +2,6 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
 import { StorageService } from '../../../../core/auth/storage.service';
-import { Patient } from '../../appointment/appointment.model';
 import { UserUpdateRequest } from '../patient.model';
 
 @Injectable({

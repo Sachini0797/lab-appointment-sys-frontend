@@ -4,7 +4,7 @@ export interface Appointment {
     appointmentDate: Date; // Assuming you're using Date objects for dates
     startTime: Date;
     endTime: Date;
-    user: Patient; // Assuming you have a User interface
+    user: User; // Assuming you have a User interface
     doctor: Doctor; // Assuming you have a Doctor interface
     labTechnician: LabTechnician; // Assuming you have a LabTechnician interface
     labTests: LabTest[]; // Assuming you have a LabTest interface and labTests is an array
@@ -22,7 +22,7 @@ export interface Appointment {
     discount: number;
   }
 
-  export interface Patient {
+  export interface User {
     id: number;
     username: string;
     designation?: string;

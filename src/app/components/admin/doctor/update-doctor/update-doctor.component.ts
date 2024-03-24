@@ -10,6 +10,7 @@ import {
 import { Router, ActivatedRoute } from '@angular/router';
 import { DoctorService } from '../service/doctor.service';
 import { Doctor } from '../doctor.model';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-doctor',
@@ -31,7 +32,8 @@ export class UpdateDoctorComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private activatedRouter: ActivatedRoute,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private snackBar: MatSnackBar,
   ) {}
 
   ngOnInit(): void {
@@ -100,11 +102,13 @@ export class UpdateDoctorComponent implements OnInit {
           this.isSuccessful = true;
           this.isSignedUpFailed = false;
           if (this.isSuccessful) {
+            this.openSnackBar('New doctor added Successfully', 'OK', 2500);
             this.router.navigate(['/admin/doctor']);
           }
         },
         error: (err) => {
           this.errorMessage = err.error.message;
+          this.openSnackBar('Try again', 'OK', 2500);
           this.isSignedUpFailed = false;
         },
       });
@@ -130,5 +134,11 @@ export class UpdateDoctorComponent implements OnInit {
 
   previousState() {
     window.history.back();
+  }
+
+  openSnackBar(message: string, action: string, duration: number) {
+    this.snackBar.open(message, action, {
+      duration: duration,
+    });
   }
 }

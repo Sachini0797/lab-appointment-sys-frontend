@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { RouterModule } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../../sidebar/sidebar.component';
 import { CommonModule } from '@angular/common';
 import {
@@ -9,6 +9,7 @@ import {
   UntypedFormBuilder,
 } from '@angular/forms';
 import { LabTestsService } from '../service/lab-tests.service';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({
   selector: 'app-update-lab-tests',
@@ -23,8 +24,12 @@ export class UpdateLabTestsComponent implements OnInit {
   editForm!: FormGroup;
   errorMessage = '';
 
-
-  constructor(private formBuilder: UntypedFormBuilder, private labTestService: LabTestsService) {}
+  constructor(
+    private formBuilder: UntypedFormBuilder,
+    private labTestService: LabTestsService,
+    private snackBar: MatSnackBar,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.editForm = this.formBuilder.group({
       id: [''],
@@ -48,29 +53,39 @@ export class UpdateLabTestsComponent implements OnInit {
     const remarks: string = this.editForm.get('remarks')?.value;
     const percentage: number = this.editForm.get('percentage')?.value;
     const discount: number = this.editForm.get('discount')?.value;
-console.log("dd");
-    this.labTestService.createLabTest(testName,
-      testShortName,
-      testNo,
-      finalAmount,
-      amount,
-      remarks,
-      percentage,
-      discount).subscribe(
-        {
-          next: (data) => {
-            console.log(data);
-            
-          },
-          error: (err) => {
-            this.errorMessage = err.error.message;
-            console.log(this.errorMessage);
-           },
-        }
-      );
+    console.log('dd');
+    this.labTestService
+      .createLabTest(
+        testName,
+        testShortName,
+        testNo,
+        finalAmount,
+        amount,
+        remarks,
+        percentage,
+        discount
+      )
+      .subscribe({
+        next: (data) => {
+          console.log(data);
+          this.openSnackBar('New Test added Successfully', 'OK', 2500);
+          this.router.navigate(['/admin/lab-tests']);
+        },
+        error: (err) => {
+          this.errorMessage = err.error.message;
+          this.openSnackBar('Try again', 'OK', 2500);
+          console.log(this.errorMessage);
+        },
+      });
   }
 
   previousState() {
     window.history.back();
+  }
+
+  openSnackBar(message: string, action: string, duration: number) {
+    this.snackBar.open(message, action, {
+      duration: duration,
+    });
   }
 }

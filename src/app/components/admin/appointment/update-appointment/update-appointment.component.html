@@ -1,7 +1,6 @@
 <div class="row justify-content-center p-5">
   <div class="col-10">
     <div class="card border-0 shadow-lg mt-5 p-5">
-
       <form
         name="appointmentForm"
         role="form"
@@ -9,7 +8,7 @@
         [formGroup]="appointmentForm"
       >
         <h2>Create or Edit Appointment Details</h2>
-  
+
         <div class="form-group" [hidden]="!appointmentForm.get('id')!.value">
           <label for="id">ID</label>
           <input
@@ -21,19 +20,20 @@
             readonly
           />
         </div>
-  
-        <div class="form-group">
-          <label for="name">Appointment Name</label>
-          <input
-            type="text"
-            class="form-control"
-            id="name"
-            name="name"
-            formControlName="name"
-          />
-        </div>
-  
+
         <div class="row">
+          <div class="col">
+            <div class="form-group">
+              <label for="name">Appointment Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                formControlName="name"
+              />
+            </div>
+          </div>
           <div class="col">
             <div class="form-group">
               <label for="appointmentDate">Appointment Date</label>
@@ -71,69 +71,162 @@
             </div>
           </div>
         </div>
-  
-        <div formGroupName="user">
-          <label for="user">User ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="id"
-            name="id"
-            formControlName="id"
-            list="patients"
-          />
-          <datalist id="patients">
-            <option *ngFor="let item of patients" [value]="item.id!">
-              {{ item.username }}
-            </option>
-          </datalist>
+        <div class="row">
+          <div class="col">
+            <div formGroupName="user">
+              <label for="user">User ID</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_id"
+                name="id"
+                formControlName="id"
+                list="patients"
+              />
+              <datalist id="patients">
+                <option *ngFor="let item of patients" [value]="item.id!">
+                  {{ item.username }}
+                </option>
+              </datalist>
+            </div>
+          </div>
+          <div class="col">
+            <div formGroupName="user">
+              <label for="user">First name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_firstName"
+                name="firstName"
+                formControlName="firstName"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div formGroupName="user">
+              <label for="user">Last name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_lastName"
+                name="lastName"
+                formControlName="lastName"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div formGroupName="user">
+              <label for="user">User email</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_email"
+                name="email"
+                formControlName="email"
+              />
+            </div>
+          </div>
+
+          <div class="col">
+            <div formGroupName="user">
+              <label for="user">Phone number</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_phoneNum"
+                name="phoneNum"
+                formControlName="phoneNum"
+              />
+            </div>
+          </div>
         </div>
-        <div formGroupName="user">
-          <label for="user">User email</label>
-          <input
-            type="text"
-            class="form-control"
-            id="email"
-            name="email"
-            formControlName="email"
-           />
-          
+
+        <div class="row">
+          <div class="col">
+            <div formGroupName="doctor">
+              <label for="doctor">Doctor ID</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                name="id"
+                formControlName="id"
+                list="doctors"
+              />
+              <datalist id="doctors">
+                <option *ngFor="let item of doctors" [value]="item.id!">
+                  {{ item.name }}
+                </option>
+              </datalist>
+            </div>
+          </div>
+          <div class="col">
+            <div formGroupName="doctor">
+              <label for="user">Designation</label>
+              <input
+                type="text"
+                class="form-control"
+                id="designation"
+                name="designation"
+                formControlName="designation"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div formGroupName="doctor">
+              <label for="doctor">Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="name"
+                name="name"
+                formControlName="name"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div class="col">
+              <div formGroupName="doctor">
+                <label for="doctor">Position</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="position"
+                  name="position"
+                  formControlName="position"
+                />
+              </div>
+            </div>
+          </div>
         </div>
-  
-        <div formGroupName="doctor">
-          <label for="doctor">Doctor ID</label>
-          <input
-            type="text"
-            class="form-control"
-            id="id"
-            name="id"
-            formControlName="id"
-            list="doctors"
-          />
-          <datalist id="doctors">
-            <option *ngFor="let item of doctors" [value]="item.id!">
-              {{ item.name }}
-            </option>
-          </datalist>
+
+        <div class="row" formGroupName="labTechnician">
+          <div class="col">
+            <div>
+              <label for="labTechnician">Lab Technician</label>
+              <input
+                type="text"
+                class="form-control"
+                id="id"
+                name="id"
+                formControlName="id"
+              />
+            </div>
+          </div>
+          <div class="col">
+            <div>
+              <label for="name">Lab Technician Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="field_name"
+                name="name"
+                formControlName="name"
+              />
+            </div>
+          </div>
         </div>
-  
-        <div formGroupName="labTechnician">
-          <label for="labTechnician">Lab Technician</label>
-          <input
-            type="text"
-            class="form-control"
-            id="id"
-            name="id"
-            formControlName="id"
-          />
-        </div>
-  
-        <!-- <div class="form-group">
-                  <label for="labTests">Lab Tests</label>
-                  <input type="text" class="form-control" id="labTests" name="labTests" formControlName="labTests" />
-              </div> -->
-  
-        <!-- Lab Tests Section -->
+
         <div formArrayName="labTests">
           <div
             *ngFor="let test of labTests.controls; let i = index"
@@ -141,65 +234,102 @@
           >
             <h3>Lab Test {{ i + 1 }}</h3>
             <div [formGroupName]="i">
-              <div class="form-group">
-                <label for="id">ID</label>
-                <input
-                  type="text"
-                  id="id"
-                  formControlName="id"
-                  class="form-control"
-                  required
-                  list="labTestsList"
-                />
-                <datalist id="labTestsList">
-                  <option *ngFor="let item of labTestsList" [value]="item.id!">
-                    {{ item.testName }}
-                  </option>
-                </datalist>
+              <div class="row">
+                <div class="col">
+                  <div class="form-group">
+                    <label for="id">ID</label>
+                    <input
+                      type="text"
+                      id="id"
+                      formControlName="id"
+                      class="form-control"
+                      required
+                      list="labTestsList"
+                    />
+                    <datalist id="labTestsList">
+                      <option
+                        *ngFor="let item of labTestsList"
+                        [value]="item.id!"
+                      >
+                        {{ item.testName }}
+                      </option>
+                    </datalist>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="testName">Test Name</label>
+                    <input
+                      type="text"
+                      id="testName"
+                      formControlName="testName"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="testShortName">Short Name</label>
+                    <input
+                      type="text"
+                      id="testShortName"
+                      formControlName="testShortName"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="testNo">Test Number</label>
+                    <input
+                      type="text"
+                      id="field_testNo"
+                      formControlName="testNo"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="form-group">
+                    <label for="amount">Amount</label>
+                    <input
+                      type="text"
+                      id="field_amount"
+                      formControlName="amount"
+                      class="form-control"
+                      required
+                    />
+                  </div>
+                </div>
+                <div class="col pt-4">
+                  <!-- Remove button for each lab test -->
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    (click)="removeLabTest(i)"
+                  >
+                  <fa-icon [icon]="faDelete" class="custom-icon"></fa-icon>
+
+                  </button>
+                </div>
               </div>
-              <div class="form-group">
-                <label for="testName">Test Name</label>
-                <input
-                  type="text"
-                  id="testName"
-                  formControlName="testName"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="testShortName">Short Name</label>
-                <input
-                  type="text"
-                  id="testShortName"
-                  formControlName="testShortName"
-                  class="form-control"
-                  required
-                />
-              </div>
-              <!-- Add more fields for other lab test details as needed -->
+
               <br />
-  
-              <!-- Remove button for each lab test -->
-              <button
-                type="button"
-                class="btn btn-danger"
-                (click)="removeLabTest(i)"
-              >
-                Remove
-              </button>
             </div>
           </div>
         </div>
         <br />
-  
+
         <!-- Button to add new lab test -->
         <button type="button" class="btn btn-primary" (click)="addLabTest()">
           Add Lab Test
         </button>
-  
+
         <br /><br />
-  
+
         <div>
           <button
             type="button"

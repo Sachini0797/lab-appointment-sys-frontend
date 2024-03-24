@@ -1,0 +1,86 @@
+<form>
+    <input type="hidden" formControlName="id">
+  
+    <!-- Appointment Section -->
+    <div formGroupName="appointment">
+      <input type="hidden" formControlName="id">
+      <label>Name:</label>
+      <input type="text" formControlName="name"><br>
+  
+      <label>Appointment Date:</label>
+      <input type="date" formControlName="appointmentDate"><br>
+  
+      <label>Start Time:</label>
+      <input type="time" formControlName="startTime"><br>
+  
+      <label>End Time:</label>
+      <input type="time" formControlName="endTime"><br>
+  
+      <!-- User Section -->
+      <div formGroupName="user">
+        <input type="hidden" formControlName="id">
+        <label>Email:</label>
+        <input type="email" formControlName="email"><br>
+  
+        <label>First Name:</label>
+        <input type="text" formControlName="firstName"><br>
+  
+        <label>Last Name:</label>
+        <input type="text" formControlName="lastName"><br>
+  
+        <label>Phone Number:</label>
+        <input type="tel" formControlName="phoneNum"><br>
+      </div>
+  
+      <!-- Doctor Section -->
+      <div formGroupName="doctor">
+        <input type="hidden" formControlName="id">
+        <label>Designation:</label>
+        <input type="text" formControlName="designation"><br>
+  
+        <label>Name:</label>
+        <input type="text" formControlName="name"><br>
+  
+        <label>Position:</label>
+        <input type="text" formControlName="position"><br>
+      </div>
+  
+      <!-- Lab Technician Section -->
+      <div formGroupName="labTechnician">
+        <input type="hidden" formControlName="id">
+      </div>
+  
+      <!-- Lab Tests Section -->
+      <div formArrayName="labTests">
+        <label>Lab Tests:</label><br>
+        <!-- <div *ngFor="let test of editForm.get('appointment.labTests').controls; let i=index" [formGroupName]="i"> -->
+        <div *ngFor="let test of editForm.get('appointment.labTests').controls; let i=index">
+          <input type="hidden" formControlName="id">
+          <label>Test Name:</label>
+          <input type="text" formControlName="testName"><br>
+  
+          <label>Test Short Name:</label>
+          <input type="text" formControlName="testShortName"><br>
+        </div>
+      </div>
+    </div>
+  
+    <!-- Billing Section -->
+    <label>Bill Amount:</label>
+    <input type="number" formControlName="billAmount"><br>
+  
+    <label>Total Amount:</label>
+    <input type="number" formControlName="totalAmount"><br>
+  
+    <label>Paid Amount:</label>
+    <input type="number" formControlName="paidAmount"><br>
+  
+    <label>Due Amount:</label>
+    <input type="number" formControlName="dueAmount"><br>
+  
+    <label>Remarks:</label>
+    <textarea formControlName="remarks"></textarea><br>
+  
+    <button type="submit">Submit</button>
+  </form>
+  
