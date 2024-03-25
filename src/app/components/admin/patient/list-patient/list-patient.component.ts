@@ -45,7 +45,6 @@ export class ListPatientComponent implements OnInit {
   }
 
   delete(id: string) {
-    // const modalRef = this.modalService.open(ModalComponent);
     const modalRef = this.modalService.open(DeletePatientComponent);
     modalRef.componentInstance.id = id;
   }
@@ -53,7 +52,5 @@ export class ListPatientComponent implements OnInit {
   createPatient(): void {
     this.route.navigate(['./', 'create'], { relativeTo: this.activatedRoute });
 
-    // Mark for check
-    // this._changeDetectorRef.markForCheck();
   }
 }

@@ -21,6 +21,9 @@ import { AppointmentComponent } from './components/admin/appointment/appointment
 import { UpdateDoctorComponent } from './components/admin/doctor/update-doctor/update-doctor.component';
 import { UpdateTechnicianComponent } from './components/admin/technician/update-technician/update-technician.component';
 import { UpdateAppointmentComponent } from './components/admin/appointment/update-appointment/update-appointment.component';
+import { ReportsListsComponent } from './components/admin/reports-lists/reports-lists.component';
+import { AlkalinePhosphateComponent } from './components/admin/print-reports/alkaline-phosphate/alkaline-phosphate.component';
+import { MyReportsComponent } from './components/patient/my-reports/my-reports.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -49,7 +52,10 @@ export const routes: Routes = [
     { path: 'admin/lab-tests-invoice', component: LabTestInvoiceComponent , canActivate:[AuthGuard]},
     { path: 'admin/lab-tests-invoice/new', component: UpdateLabTestInvoiceComponent , canActivate:[AuthGuard]},
     { path: 'admin/labtestinvoiceprint', component: LabtestinvoiceprintComponent , canActivate:[AuthGuard]},
+    { path: 'admin/reportsList', component: ReportsListsComponent , canActivate:[AuthGuard]},
+    { path: 'admin/print/alkaline', component: AlkalinePhosphateComponent , canActivate:[AuthGuard]},
     { path: 'patient/patient-dashboard', component: PatientDashboardComponent, canActivate:[AuthGuard]},
+    { path: 'patient/my-reports', component: MyReportsComponent, canActivate:[AuthGuard]},
 ];
 
 

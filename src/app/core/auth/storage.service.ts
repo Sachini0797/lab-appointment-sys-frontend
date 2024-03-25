@@ -12,17 +12,11 @@ export class StorageService {
     sessionStorage.removeItem(TOKEN_KEY);
     sessionStorage.removeItem(USER_KEY);
   }
-  // public getBearerToke() {
-  //   const x = window.sessionStorage.getItem('token');
-
-  //   return x;
-  // }
 
   public saveUser(user: any): void {
     window.sessionStorage.removeItem(USER_KEY);
     window.sessionStorage.setItem(USER_KEY, JSON.stringify(user));
   }
-
   public getUser(): any {
     const user = window.sessionStorage.getItem(USER_KEY);
     console.log('user test', user);
@@ -32,7 +26,6 @@ export class StorageService {
 
     return {};
   }
-
 
   public saveBearerToken(token: string): void {
     sessionStorage.setItem('token', token);

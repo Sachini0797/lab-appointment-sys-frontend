@@ -1,408 +1,144 @@
-
-
 <div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
-    <div class="m-5 card border-0 shadow-lg p-5">
-        <h2 id="page-heading" data-cy="LabTestInvoiceHeading">
-          <span>Lab Test Invoices</span>
-      
-          <div class="d-flex justify-content-end">
-            
-      
-            <button
-              id="jh-create-entity"
-              data-cy="entityCreateButton"
-              class="btn btn-primary jh-create-entity create-lab-test-invoice"
-              [routerLink]="['/admin/lab-tests-invoice/new']"
-            >
-               <span class="hidden-sm-down"> Create a new Lab Test Invoice </span>
-            </button>
-          </div>
-        </h2>
-      
-      
-        
-      
-        <!-- <div class="alert alert-warning" id="no-result" *ngIf="labTestInvoices?.length === 0">
-          <span>No Lab Test Invoices found</span>
-        </div> -->
-      
-        <!-- <div class="table-responsive table-entities" id="entities" *ngIf="labTestInvoices && labTestInvoices.length > 0"> -->
-        <div class="table-responsive table-entities">
-          <table class="table table-striped" aria-describedby="page-heading">
-            <thead>
-              <tr>
-                <th scope="col" jhiSortBy="id">
-                  <div class="d-flex">
-                    <span>ID</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="refNo">
-                  <div class="d-flex">
-                    <span>Ref No</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="dateCreated">
-                  <div class="d-flex">
-                    <span>Date Created</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="userID">
-                  <div class="d-flex">
-                    <span>User ID</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="medicalCentreID">
-                  <div class="d-flex">
-                    <span>Medical Centre ID</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doctorName">
-                  <div class="d-flex">
-                    <span>Doctor Name</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doctorID">
-                  <div class="d-flex">
-                    <span>Doctor ID</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="description1">
-                  <div class="d-flex">
-                    <span>Description 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="testNo1">
-                  <div class="d-flex">
-                    <span>Test No 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="amount1">
-                  <div class="d-flex">
-                    <span>Amount 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="delivered1">
-                  <div class="d-flex">
-                    <span>Delivered 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="description2">
-                  <div class="d-flex">
-                    <span>Description 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="testNo2">
-                  <div class="d-flex">
-                    <span>Test No 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="amount2">
-                  <div class="d-flex">
-                    <span>Amount 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="delivered2">
-                  <div class="d-flex">
-                    <span>Delivered 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="description3">
-                  <div class="d-flex">
-                    <span>Description 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="testNo3">
-                  <div class="d-flex">
-                    <span>Test No 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="amount3">
-                  <div class="d-flex">
-                    <span>Amount 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="delivered3">
-                  <div class="d-flex">
-                    <span>Delivered 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="description4">
-                  <div class="d-flex">
-                    <span>Description 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="testNo4">
-                  <div class="d-flex">
-                    <span>Test No 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="amount4">
-                  <div class="d-flex">
-                    <span>Amount 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="delivered4">
-                  <div class="d-flex">
-                    <span>Delivered 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="description5">
-                  <div class="d-flex">
-                    <span>Description 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="testNo5">
-                  <div class="d-flex">
-                    <span>Test No 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="amount5">
-                  <div class="d-flex">
-                    <span>Amount 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="delivered5">
-                  <div class="d-flex">
-                    <span>Delivered 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="billAmmount">
-                  <div class="d-flex">
-                    <span>Bill Ammount</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="discount">
-                  <div class="d-flex">
-                    <span>Discount</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="totalAmount">
-                  <div class="d-flex">
-                    <span>Total Amount</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="paidAmount">
-                  <div class="d-flex">
-                    <span>Paid Amount</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="ecg">
-                  <div class="d-flex">
-                    <span>Ecg</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="remarks">
-                  <div class="d-flex">
-                    <span>Remarks</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="handedOver">
-                  <div class="d-flex">
-                    <span>Handed Over</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="inHouse1">
-                  <div class="d-flex">
-                    <span>In House 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="inHouse2">
-                  <div class="d-flex">
-                    <span>In House 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="inHouse3">
-                  <div class="d-flex">
-                    <span>In House 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="inHouse4">
-                  <div class="d-flex">
-                    <span>In House 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="inHouse5">
-                  <div class="d-flex">
-                    <span>In House 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="finalAmount1">
-                  <div class="d-flex">
-                    <span>Final Amount 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="finalAmount2">
-                  <div class="d-flex">
-                    <span>Final Amount 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="finalAmount3">
-                  <div class="d-flex">
-                    <span>Final Amount 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="finalAmount4">
-                  <div class="d-flex">
-                    <span>Final Amount 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="finalAmount5">
-                  <div class="d-flex">
-                    <span>Final Amount 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneByName1">
-                  <div class="d-flex">
-                    <span>Done By Name 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneByName2">
-                  <div class="d-flex">
-                    <span>Done By Name 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneByName3">
-                  <div class="d-flex">
-                    <span>Done By Name 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneByName4">
-                  <div class="d-flex">
-                    <span>Done By Name 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneByName5">
-                  <div class="d-flex">
-                    <span>Done By Name 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneById1">
-                  <div class="d-flex">
-                    <span>Done By Id 1</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneById2">
-                  <div class="d-flex">
-                    <span>Done By Id 2</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneById3">
-                  <div class="d-flex">
-                    <span>Done By Id 3</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneById4">
-                  <div class="d-flex">
-                    <span>Done By Id 4</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="doneById5">
-                  <div class="d-flex">
-                    <span>Done By Id 5</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="patients">
-                  <div class="d-flex">
-                    <span>Patients</span>
-                   </div>
-                </th>
-                <th scope="col" jhiSortBy="medicalCentre">
-                  <div class="d-flex">
-                    <span>Medical Centre</span>
-                   </div>
-                </th>
-                <th scope="col"></th>
-              </tr>
-            </thead>
-            <tbody>
-              <!-- <tr *ngFor="let labTestInvoice of labTestInvoices; trackBy: trackId" data-cy="entityTable"> -->
-              <tr>
-                <td>
-                    id
-                  <!-- <a [routerLink]="['/lab-test-invoice', labTestInvoice.id, 'view']">{{ labTestInvoice.id }}</a> -->
-                </td>
-                <td>  labTestInvoice.refNo  </td>
-                <td>  labTestInvoice.dateCreated | formatMediumDate  </td>
-                <td>  labTestInvoice.userID  </td>
-                <td>  labTestInvoice.medicalCentreID  </td>
-                <td>  labTestInvoice.doctorName  </td>
-                <td>  labTestInvoice.doctorID  </td>
-                <td>  labTestInvoice.description1  </td>
-                <td>  labTestInvoice.testNo1  </td>
-                <td>  labTestInvoice.amount1  </td>
-                <td>  labTestInvoice.delivered1  </td>
-                <td>  labTestInvoice.description2  </td>
-                <td>  labTestInvoice.testNo2  </td>
-                <td>  labTestInvoice.amount2  </td>
-                <td>  labTestInvoice.delivered2  </td>
-                <td>  labTestInvoice.description3  </td>
-                <td>  labTestInvoice.testNo3  </td>
-                <td>  labTestInvoice.amount3  </td>
-                <td>  labTestInvoice.delivered3  </td>
-                <td>  labTestInvoice.description4  </td>
-                <td>  labTestInvoice.testNo4  </td>
-                <td>  labTestInvoice.amount4  </td>
-                <td>  labTestInvoice.delivered4  </td>
-                <td>  labTestInvoice.description5  </td>
-                <td>  labTestInvoice.testNo5  </td>
-                <td>  labTestInvoice.amount5  </td>
-                <td>  labTestInvoice.delivered5  </td>
-                <td>  labTestInvoice.billAmmount  </td>
-                <td>  labTestInvoice.discount  </td>
-                <td>  labTestInvoice.totalAmount  </td>
-                <td>  labTestInvoice.paidAmount  </td>
-                <td>  labTestInvoice.ecg  </td>
-                <td>  labTestInvoice.remarks  </td>
-                <td>  labTestInvoice.handedOver  </td>
-                <td>  labTestInvoice.inHouse1  </td>
-                <td>  labTestInvoice.inHouse2  </td>
-                <td>  labTestInvoice.inHouse3  </td>
-                <td>  labTestInvoice.inHouse4  </td>
-                <td>  labTestInvoice.inHouse5  </td>
-                <td>  labTestInvoice.finalAmount1  </td>
-                <td>  labTestInvoice.finalAmount2  </td>
-                <td>  labTestInvoice.finalAmount3  </td>
-                <td>  labTestInvoice.finalAmount4  </td>
-                <td>  labTestInvoice.finalAmount5  </td>
-                <td>  labTestInvoice.doneByName1  </td>
-                <td>  labTestInvoice.doneByName2  </td>
-                <td>  labTestInvoice.doneByName3  </td>
-                <td>  labTestInvoice.doneByName4  </td>
-                <td>  labTestInvoice.doneByName5  </td>
-                <td>  labTestInvoice.doneById1  </td>
-                <td>  labTestInvoice.doneById2  </td>
-                <td>  labTestInvoice.doneById3  </td>
-                <td>  labTestInvoice.doneById4  </td>
-                <td>  labTestInvoice.doneById5  </td>
-                <td>  labTestInvoice.patients  </td>
-                <td>  labTestInvoice.medicalCentre  </td>
-                <td class="text-end">
-                  <div class="btn-group">
-                    <button
-                      type="submit"
-                       class="btn btn-info btn-sm"
-                      data-cy="entityDetailsButton"
-                    >
-                       <span class="d-none d-md-inline">View</span>
-                    </button>
-      
-                    <button
-                      type="submit"
-                       class="btn btn-primary btn-sm"
-                      data-cy="entityEditButton"
-                    >
-                       <span class="d-none d-md-inline">Edit</span>
-                    </button>
-      
-                    <button type="submit" (click)="delete( )" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
-                       <span class="d-none d-md-inline">Delete</span>
-                    </button>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      
+  <div class="m-5 card border-0 shadow-lg p-5">
+    <h2 id="page-heading" data-cy="LabTestInvoiceHeading">
+      <span>Lab Test Invoices</span>
+
+      <div class="d-flex justify-content-end">
+        <button
+          id="jh-create-entity"
+          data-cy="entityCreateButton"
+          class="btn btn-primary jh-create-entity create-lab-test-invoice"
+          [routerLink]="['/admin/lab-tests-invoice/new']"
+        >
+          <span class="hidden-sm-down"> Create a new Lab Test Invoice </span>
+        </button>
       </div>
-      
+    </h2>
+
+    <div
+      class="alert alert-warning"
+      id="no-result"
+      *ngIf="labTestsInvoice?.length === 0"
+    >
+      <span>No Lab Test Invoices found</span>
+    </div>
+
+    <div
+      class="table-responsive table-entities"
+      id="entities"
+      *ngIf="labTestsInvoice && labTestsInvoice.length > 0"
+    >
+      <!-- <div class="table-responsive table-entities"> -->
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <th scope="col" jhiSortBy="id">
+              <div class="d-flex">
+                <span>ID</span>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="appointment">
+              <div class="d-flex">
+                <span>Appointment</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="generatedAt">
+              <div class="d-flex">
+                <span>Generated At</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="billAmount">
+              <div class="d-flex">
+                <span>Bill Amount</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="discount">
+              <div class="d-flex">
+                <span>Discount</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="totalAmount">
+              <div class="d-flex">
+                <span>Total Amount</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="paidAmount">
+              <div class="d-flex">
+                <span>Paid Amount</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="dueAmount">
+              <div class="d-flex">
+                <span>Due Amount</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="remarks">
+              <div class="d-flex">
+                <span>Remarks</span>
+               </div>
+            </th>
+            <th scope="col" jhiSortBy="paymentStatus">
+              <div class="d-flex">
+                <span>Payment Status</span>
+               </div>
+            </th>
+
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let labTestInvoice of labTestsInvoice"
+            data-cy="entityTable"
+          >
+            <!-- <tr> -->
+            <td>
+               <a [routerLink]="['/admin/reportsList']">{{ labTestInvoice.id }}</a>
+            </td>
+            <!-- <td>{{ labTestInvoice.id }}</td> -->
+            <td>{{ labTestInvoice.appointment.id }}</td>
+            <td>{{ labTestInvoice.generatedAt }}</td>
+            <td>{{ labTestInvoice.billAmount }}</td>
+            <td>{{ labTestInvoice.discount }}</td>
+            <td>{{ labTestInvoice.totalAmount }}</td>
+            <td>{{ labTestInvoice.paidAmount }}</td>
+            <td>{{ labTestInvoice.dueAmount }}</td>
+            <td>{{ labTestInvoice.remarks }}</td>
+            <td>{{ labTestInvoice.paymentStatus }}</td>
+
+            <td class="text-end">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                  [routerLink]="['/admin/labtestinvoiceprint']"  
+                >
+                  <span class="d-none d-md-inline">View</span>
+                </button>
+
+                <button
+                  type="submit"
+                  class="btn btn-primary btn-sm"
+                  data-cy="entityEditButton"
+                >
+                  <span class="d-none d-md-inline">Edit</span>
+                </button>
+
+                <button
+                  type="submit"
+                  (click)="delete()"
+                  class="btn btn-danger btn-sm"
+                  data-cy="entityDeleteButton"
+                >
+                  <span class="d-none d-md-inline">Delete</span>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

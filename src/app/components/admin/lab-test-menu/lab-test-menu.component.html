@@ -4,27 +4,45 @@
 ></app-sidebar>
 
 <div class="content" [ngClass]="{ sidebarExpanded: sidebarExpanded }">
-  <p>lab-test-menu works!</p>
-  <div class="container">
+  <div class="container p-5">
     <ul class="  " style="width: 100%">
+      <h3 class="p-">Lab Tests Menu</h3>
       <div class="row">
         <div class="col-4">
           <li>
-            <a class="dropdown-item" routerLink="/alkaline-phosphatase" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-              <!-- <fa-icon icon="vial" [fixedWidth]="true"></fa-icon> -->
-              <span><span class="number">01 &nbsp;</span>Alkaline Phosphatase</span>
+            <a
+              class="dropdown-item"
+              routerLink="/alkaline-phosphatase"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+               <fa-icon [icon]="fatag"></fa-icon>
+
+              <span
+                ><span class="number">&nbsp;01 &nbsp;</span>Alkaline Phosphatase</span
+              >
             </a>
           </li>
           <li>
-            <a class="dropdown-item" routerLink="/aptt-test" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-              <!-- <fa-icon icon="vial" [fixedWidth]="true"></fa-icon> -->
-              <span><span class="number">02 &nbsp;</span>Aptt Test</span>
+            <a
+              class="dropdown-item"
+              routerLink="/aptt-test"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+            <fa-icon [icon]="fatag"></fa-icon>
+            <span><span class="number">&nbsp;02 &nbsp;</span>Aptt Test</span>
             </a>
           </li>
           <li>
-            <a class="dropdown-item" routerLink="/blood-grouping" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">
-              <!-- <fa-icon icon="vial" [fixedWidth]="true"></fa-icon> -->
-              <span><span class="number">03 &nbsp;</span>Blood Grouping </span>
+            <a
+              class="dropdown-item"
+              routerLink="/blood-grouping"
+              routerLinkActive="active"
+              [routerLinkActiveOptions]="{ exact: true }"
+            >
+            <fa-icon [icon]="fatag"></fa-icon>
+            <span><span class="number">&nbsp;03 &nbsp;</span>Blood Grouping </span>
             </a>
           </li>
           <li>
@@ -34,13 +52,15 @@
               routerLinkActive="active"
               [routerLinkActiveOptions]="{ exact: true }"
             >
-               <span><span class="number">04 &nbsp;</span>Blood Sugar Series Type 2 </span>
+            <fa-icon [icon]="fatag"></fa-icon>
+
+              <span
+                ><span class="number">&nbsp;04 &nbsp;</span>Blood Sugar Series Type 2
+              </span>
             </a>
           </li>
-
         </div>
       </div>
     </ul>
   </div>
-  
 </div>

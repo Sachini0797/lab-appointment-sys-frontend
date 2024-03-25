@@ -21,7 +21,6 @@ import { RegisterService } from '../../../register/register.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PatientService } from '../service/patient.service';
 import { User } from '../patient.model';
-import { SnackBarComponent } from '../../../common/snack-bar/snack-bar.component';
 import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Component({

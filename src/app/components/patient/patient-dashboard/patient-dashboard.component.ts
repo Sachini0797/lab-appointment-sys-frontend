@@ -15,12 +15,18 @@ import { StorageService } from '../../../core/auth/storage.service';
 export class PatientDashboardComponent implements OnInit {
   sidebarExpanded = true;
   content?: string;
+  todayRealtimeDate: number = Date.now();
+  user: any;
+
   constructor(private userRoleService: UserRoleService,private storageService: StorageService, private router: Router) {}
 
   ngOnInit(): void {
     if(this.storageService.getUser().roles[0] !== "ROLE_USER"){
       this.router.navigate(['/login']);
     }
+
+    
+
     this.userRoleService.getUserBoard().subscribe({
       next: (data) => {
         this.content = data;
@@ -34,5 +40,8 @@ export class PatientDashboardComponent implements OnInit {
         }
       },
     });
+    setInterval(() => {
+      this.todayRealtimeDate = Date.now();
+    }, 1);
   }
 }

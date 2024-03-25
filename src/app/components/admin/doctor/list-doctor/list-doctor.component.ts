@@ -11,24 +11,26 @@ import { SidebarComponent } from '../../../sidebar/sidebar.component';
   standalone: true,
   imports: [CommonModule, RouterModule, SidebarComponent],
   templateUrl: './list-doctor.component.html',
-  styleUrl: './list-doctor.component.scss'
+  styleUrl: './list-doctor.component.scss',
 })
 export class ListDoctorComponent implements OnInit {
   sidebarExpanded = true;
   public doctors: any[] = [];
 
-  constructor(protected modalService: NgbModal, private doctorService: DoctorService) {}
+  constructor(
+    protected modalService: NgbModal,
+    private doctorService: DoctorService
+  ) {}
 
   ngOnInit(): void {
     this.doctorService.getdoctors().subscribe(
       (response: any[]) => {
         this.doctors = response;
-        console.log("doctors: ",this.doctors);
+        console.log('doctors: ', this.doctors);
       },
       (error: HttpErrorResponse) => {
         console.log(error.message);
       }
     );
-   }
-
+  }
 }
