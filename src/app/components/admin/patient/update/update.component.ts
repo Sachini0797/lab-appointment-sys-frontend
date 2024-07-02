@@ -149,7 +149,7 @@ export class UpdateComponent implements OnInit {
           }
         },
         error: (err) => {
-          this.openSnackBar(err.error, 'OK', 2500);
+          this.openSnackBar("something went wrong", 'OK', 2500);
           console.log(err);
           this.errorMessage = err.error.message;
           this.isSignedUpFailed = false;
@@ -207,7 +207,7 @@ export class UpdateComponent implements OnInit {
             }
           },
           error: (err) => {
-            this.openSnackBar(err.error.message, 'OK', 2500);
+            this.openSnackBar("Error: email is already in use!", 'OK', 2500);
             console.log(this.errorMessage);
             this.errorMessage = err.error.message;
             this.isSignedUpFailed = false;

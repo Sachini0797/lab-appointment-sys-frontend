@@ -66,4 +66,16 @@ export class DoctorService {
     console.error('An error occurred:', error);
     return throwError(error); // Returning throwError to propagate the error
   }
+
+  public deleteDoctor(id: string): Observable<void> {
+    const headers = this.getHeaders();
+    const responseType = 'json'; // Set your desired response type here
+
+    // Define options for the request
+    const options = {
+      headers: headers,
+      responseType: responseType as 'json', // Cast responseType to avoid compilation errors
+    };
+    return this.http.delete<void>(`${this.apiServerUrl}/${id}`, options);
+  }
 }

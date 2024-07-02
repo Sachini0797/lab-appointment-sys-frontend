@@ -1,0 +1,81 @@
+<div class="content">
+  <div class="m-5 card border-0 shadow-lg p-5">
+    <h2 id="page-heading" data-cy="DoctorHeading">
+      <span>My Reports</span>
+    </h2>
+
+    <div class="table-responsive table-entities" id="entities">
+      <table class="table table-striped" aria-describedby="page-heading">
+        <thead>
+          <tr>
+            <th scope="col">
+              <div class="d-flex">
+                <span> Report ID</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="name">
+              <div class="d-flex">
+                <span>Test Name</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="designation">
+              <div class="d-flex">
+                <span>Test Short Name</span>
+              </div>
+            </th>
+            <th scope="col" jhiSortBy="consultantTitle">
+              <div class="d-flex">
+                <span>Test Date</span>
+              </div>
+            </th>
+
+            <th scope="col" jhiSortBy="contactNumber1">
+              <div class="d-flex">
+                <span>Referenced By</span>
+              </div>
+            </th>
+            
+            <th scope="col" jhiSortBy="email">
+              <div class="d-flex">
+                <span>Remarks</span>
+              </div>
+            </th>
+
+            <th scope="col"></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr data-cy="entityTable" *ngFor="let item of alkaline">
+            <td>{{item.id}}</td>
+            <td>Alkaline Phosphate</td>
+            <td>AP</td>
+            <td>{{item.createdDate}}</td>
+            <td>{{item.refBy}}</td>
+             <td>{{item.remarks}}</td>
+            <td class="text-end">
+              <div class="btn-group">
+                <button
+                  type="submit"
+                  class="btn btn-info btn-sm"
+                  data-cy="entityDetailsButton"
+                  (click)="getReport(item.appointmentId)"
+                >
+                  <span class="d-none d-md-inline">View</span>
+                </button>
+               
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <button
+        type="submit"
+        class="btn btn-secondary btn-sm"
+        data-cy="entityDeleteButton"
+        (click)="previousState()"
+      >
+        <span class="d-none d-md-inline">Back</span>
+      </button>
+    </div>
+  </div>
+</div>

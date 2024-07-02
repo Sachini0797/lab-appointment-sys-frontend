@@ -44,6 +44,18 @@ export class AppointmentService {
     return this.http.get<Appointment[]>(`${this.apiServerUrl}/all`, options);
   }
 
+  public getAppointmentByID(id: string | any): Observable<any> {
+    const headers = this.getHeaders();
+    const responseType = 'json'; // Set your desired response type here
+
+    // Define options for the request
+    const options = {
+      headers: headers,
+      responseType: responseType as 'json', // Cast responseType to avoid compilation errors
+    };
+    return this.http.get<Appointment>(`${this.apiServerUrl}/${id}`, options);
+  }
+
   public createAppointment(appointment: any): Observable<Appointment> {
     const headers = this.getHeaders();
 
@@ -104,7 +116,7 @@ export class AppointmentService {
         testName: labtest.testName,
         testShortName: labtest.testShortName,
         testNo: labtest.testNo,
-         amount: labtest.amount
+        amount: labtest.amount,
       })),
     };
 

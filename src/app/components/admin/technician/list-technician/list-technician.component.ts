@@ -5,6 +5,7 @@ import { TechnicianService } from '../service/technician.service';
 import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 import { SidebarComponent } from '../../../sidebar/sidebar.component';
+import { DeleteComponent } from '../delete/delete.component';
 
 @Component({
   selector: 'app-list-technician',
@@ -30,4 +31,9 @@ export class ListTechnicianComponent implements OnInit {
       }
     );
    }
+
+   delete(id: string) {
+    const modalRef = this.modalService.open(DeleteComponent);
+    modalRef.componentInstance.id = id;
+  }
 }

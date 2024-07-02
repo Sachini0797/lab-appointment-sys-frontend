@@ -25,16 +25,16 @@
             />
           </div>
           <div class="form-group col">
-            <label class="form-control-label" for="field_dateCreated"
+            <label class="form-control-label" for="field_generatedAt"
               >Date Created</label
             >
             <div class="d-flex">
               <input
-                id="field_dateCreated"
+                id="field_generatedAt"
                 type="datetime-local"
                 class="form-control"
-                name="dateCreated"
-                formControlName="dateCreated"
+                name="generatedAt"
+                formControlName="generatedAt"
                 placeholder="YYYY-MM-DD HH:mm"
               />
             </div>
@@ -274,179 +274,98 @@
 
             <hr />
             <div class="row" formArrayName="labTests">
-            <!-- <ng-container *ngFor="let labTest of editForm.get('appointment.labTests').controls; let i = index" [formGroupName]="i"> -->
-              <div class="row"
+              <ng-container
+                *ngFor="let labTest of labTestList['controls']; let i = index"
               >
-              <div class="form-group col-3">
-                <label class="form-control-label" for="field_id"
-                  >Test ID 1 :
-                </label>
-                <input
-                  type="text"
-                  list="des1"
-                  class="form-control"
-                  name="id"
-                  id="field_id"
-                  formControlName="id"
-                  style="background-color: lightblue; font-weight: bold"
-                />
-                
-              </div>
-               <div class="form-group col">
-                <label class="form-control-label" for="field_testName"
-                  >Test Name :
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  name="testName"
-                  id="field_testName"
-                  formControlName="testName"
-                  style="background-color: lightblue; font-weight: bold"
-                />
-              </div>
-  
-               <div class="form-group col">
-                <label class="form-control-label" for="field_testShortName"
-                  >Test Short Name :
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  style="background-color: lightblue; font-weight: bold"
-                  name="testShortName"
-                  id="field_testShortName"
-                />
-                
-              </div>
-  
-              <div class="form-group col">
-                <label class="form-control-label" for="field_testNo"
-                  >Test Number :
-                </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  style="background-color: lightblue; font-weight: bold"
-                  name="testNo"
-                  id="field_testNo"
-                />
-                
-              </div>
-  
-               <div class="form-group col">
-                <label class="form-control-label" for="field_amount"
-                  >Amount  :
-                </label>
-                <input
-                  type="number"
-                  class="form-control"
-                  name="amount"
-                  id="field_amount"
-                  formControlName="amount"
-                />
-              </div>
-  
-                </div>
-            <!-- </ng-container> -->
-             
+                <!-- <ng-container *ngFor="let item of editForm.get('labTests').controls; "> -->
+                <div class="row">
+                  <div class="form-group col-3">
+                    <label class="form-control-label" for="field_id"
+                      >Test ID :
+                    </label>
+                    <input
+                      type="text"
+                      list="id"
+                      class="form-control"
+                      name="id"
+                      id="field_id"
+                      [formControl]="labTest.get('id')"
+                      style="background-color: lightblue; font-weight: bold"
+                    />
+                  </div>
+                  <div class="form-group col">
+                    <label class="form-control-label" for="field_testName"
+                      >Test Name :
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      name="testName"
+                      id="field_testName"
+                      [formControl]="labTest.get('testName')"
+                      style="background-color: lightblue; font-weight: bold"
+                    />
+                  </div>
 
+                  <div class="form-group col">
+                    <label class="form-control-label" for="field_testShortName"
+                      >Test Short Name :
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      style="background-color: lightblue; font-weight: bold"
+                      name="testShortName"
+                      id="field_testShortName"
+                      [formControl]="labTest.get('testShortName')"
+                    />
+                  </div>
+
+                  <div class="form-group col">
+                    <label class="form-control-label" for="field_testNo"
+                      >Test Number :
+                    </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      style="background-color: lightblue; font-weight: bold"
+                      name="testNo"
+                      id="field_testNo"
+                      [formControl]="labTest.get('testNo')"
+
+                    />
+                  </div>
+
+                  <div class="form-group col">
+                    <label class="form-control-label" for="field_amount"
+                      >Amount :
+                    </label>
+                    <input
+                      type="number"
+                      class="form-control"
+                      name="amount"
+                      id="field_amount"
+                      [formControl]="labTest.get('amount')"
+                    />
+                  </div>
+                </div>
+              </ng-container>
             </div>
 
-            <div class="row" formArrayName="labTests">
-              <!-- <ng-container *ngFor="let labTest of editForm.get('appointment.labTests').controls; let i = index" [formGroupName]="i"> -->
-                <div class="row"
-                >
-                <div class="form-group col-3">
-                  <label class="form-control-label" for="field_id"
-                    >Test ID 1 :
-                  </label>
-                  <input
-                    type="text"
-                    list="des1"
-                    class="form-control"
-                    name="id"
-                    id="field_id"
-                    formControlName="id"
-                    style="background-color: lightblue; font-weight: bold"
-                  />
-                  
-                </div>
-                 <div class="form-group col">
-                  <label class="form-control-label" for="field_testName"
-                    >Test Name :
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    name="testName"
-                    id="field_testName"
-                    formControlName="testName"
-                    style="background-color: lightblue; font-weight: bold"
-                  />
-                </div>
-    
-                 <div class="form-group col">
-                  <label class="form-control-label" for="field_testShortName"
-                    >Test Short Name :
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    style="background-color: lightblue; font-weight: bold"
-                    name="testShortName"
-                    id="field_testShortName"
-                  />
-                  
-                </div>
-    
-                <div class="form-group col">
-                  <label class="form-control-label" for="field_testNo"
-                    >Test Number :
-                  </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    style="background-color: lightblue; font-weight: bold"
-                    name="testNo"
-                    id="field_testNo"
-                  />
-                  
-                </div>
-    
-                 <div class="form-group col">
-                  <label class="form-control-label" for="field_amount"
-                    >Amount  :
-                  </label>
-                  <input
-                    type="number"
-                    class="form-control"
-                    name="amount"
-                    id="field_amount"
-                    formControlName="amount"
-                  />
-                </div>
-    
-                  </div>
-              <!-- </ng-container> -->
-               
-  
-              </div>
-
-             <hr />
+            <hr />
           </div>
 
           <div class="row">
             <div class="form-group col-6">
-              <label class="form-control-label" for="field_billAmmount"
+              <label class="form-control-label" for="field_billAmount"
                 >Bill Amount</label
               >
               <input
                 type="number"
                 class="form-control"
-                name="billAmmount"
-                id="field_billAmmount"
-                formControlName="billAmmount"
+                name="billAmount"
+                id="field_billAmount"
+                formControlName="billAmount"
               />
             </div>
 

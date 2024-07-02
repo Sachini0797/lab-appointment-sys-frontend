@@ -7,162 +7,63 @@
   <div class="m-5 card border-0 shadow-lg p-5">
     <h2 id="page-heading" data-cy="DoctorHeading">
       <span>My Reports</span>
-
     </h2>
 
+    <div class="row">
+      <div class="col-4">
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="/patient/my-reports/alkaline-list"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <fa-icon [icon]="fatag"></fa-icon>
 
-    <div
-      class="table-responsive table-entities"
-      id="entities"
-     >
-      <table class="table table-striped" aria-describedby="page-heading">
-        <thead>
-          <tr>
-            <th scope="col">
-              <div class="d-flex">
-                <span> Report ID</span>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="name">
-              <div class="d-flex">
-                <span>Test Name</span>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="designation">
-              <div class="d-flex">
-                <span>Test Short Name</span>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="consultantTitle">
-              <div class="d-flex">
-                <span>Test Date</span>
-              </div>
-            </th>
-           
-            <th scope="col" jhiSortBy="contactNumber1">
-              <div class="d-flex">
-                <span>Referenced By</span>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="email">
-              <div class="d-flex">
-                <span>Lab Technician Name</span>
-              </div>
-            </th>
-            <th scope="col" jhiSortBy="email">
-                <div class="d-flex">
-                  <span>Remarks</span>
-                </div>
-              </th>
-           
-            <th scope="col"></th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr data-cy="entityTable">
-            <td> 1 </td>
-            <td> Alkaline Phosphate </td>
-            <td> AP </td>
-            <td> 2024/03/23 </td>
-            <td> Prof. Olivia Fernando </td>
-            <td> Joe Smith </td>
-            <td> Good </td>
-            <td class="text-end">
-              <div class="btn-group">
-                <button
-                  type="submit"
-                  class="btn btn-info btn-sm"
-                  data-cy="entityDetailsButton"
-                >
-                  <span class="d-none d-md-inline">View</span>
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-sm"
-                  data-cy="entityEditButton"
-                >
-                  <span class="d-none d-md-inline">Edit</span>
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-danger btn-sm"
-                  data-cy="entityDeleteButton"
-                >
-                  <span class="d-none d-md-inline">Delete</span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr data-cy="entityTable">
-            <td> 1 </td>
-            <td> Alkaline Phosphate </td>
-            <td> AP </td>
-            <td> 2024/03/23 </td>
-            <td> Prof. Olivia Fernando </td>
-            <td> Joe Smith </td>
-            <td> Good </td>
-            <td class="text-end">
-              <div class="btn-group">
-                <button
-                  type="submit"
-                  class="btn btn-info btn-sm"
-                  data-cy="entityDetailsButton"
-                >
-                  <span class="d-none d-md-inline">View</span>
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-sm"
-                  data-cy="entityEditButton"
-                >
-                  <span class="d-none d-md-inline">Edit</span>
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-danger btn-sm"
-                  data-cy="entityDeleteButton"
-                >
-                  <span class="d-none d-md-inline">Delete</span>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr data-cy="entityTable">
-            <td> 1 </td>
-            <td> Alkaline Phosphate </td>
-            <td> AP </td>
-            <td> 2024/03/23 </td>
-            <td> Prof. Olivia Fernando </td>
-            <td> Joe Smith </td>
-            <td> Good </td>
-            <td class="text-end">
-              <div class="btn-group">
-                <button
-                  type="submit"
-                  class="btn btn-info btn-sm"
-                  data-cy="entityDetailsButton"
-                >
-                  <span class="d-none d-md-inline">View</span>
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-primary btn-sm"
-                  data-cy="entityEditButton"
-                >
-                  <span class="d-none d-md-inline">Edit</span>
-                </button>
-                <button
-                  type="submit"
-                  class="btn btn-danger btn-sm"
-                  data-cy="entityDeleteButton"
-                >
-                  <span class="d-none d-md-inline">Delete</span>
-                </button>
-              </div>
-            </td>
-          </tr>
-        </tbody>
-      </table>
+            <span
+              ><span class="number">&nbsp;01 &nbsp;</span>Alkaline
+              Phosphatase</span
+            >
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="/patient/my-reports/bloodUrea-list"
+            routerLinkActive="active"
+            [routerLinkActiveOptions]="{ exact: true }"
+          >
+            <fa-icon [icon]="fatag"></fa-icon>
+            <span><span class="number">&nbsp;02 &nbsp;</span>Blood Urea</span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="/blood-grouping"
+            routerLinkActive="active"
+          >
+            <fa-icon [icon]="fatag"></fa-icon>
+            <span
+              ><span class="number">&nbsp;03 &nbsp;</span>Blood Grouping
+            </span>
+          </a>
+        </li>
+        <li>
+          <a
+            class="dropdown-item"
+            routerLink="/blood-sugar-series-type-2"
+            routerLinkActive="active"
+          >
+            <fa-icon [icon]="fatag"></fa-icon>
+
+            <span
+              ><span class="number">&nbsp;04 &nbsp;</span>Blood Sugar Series
+              Type 2
+            </span>
+          </a>
+        </li>
+      </div>
     </div>
   </div>
 </div>

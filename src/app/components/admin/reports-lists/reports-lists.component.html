@@ -25,145 +25,161 @@
 <div class="row justify-content-center">
   <div class="col-10">
     <div>
-      <h2><span>Lab Test Invoice</span> 1</h2>
+      <h2><span>Lab Test Invoice</span> {{ labTestInvoiceID }}</h2>
       <br />
       <hr />
       <br />
 
       <dl class="row jh-entity-details">
-        <div style="text-align: left"> 
-          <dt><span>Ref No</span></dt>
+        <div style="text-align: left">
+          <dt><span>Appointment No</span></dt>
           <dd>
-            <span>123</span>
+            <span>{{ labTestInvoice.appointment.id }}</span>
           </dd>
           <dt><span>Date Created</span></dt>
           <dd>
-            <span>2024/03/25</span>
+            <span>{{
+              labTestInvoice.generatedAt | date : "medium" : "long"
+            }}</span>
           </dd>
           <dt><span>User ID</span></dt>
           <dd>
             <span>
-              <a>4</a>
+              <a>{{ labTestInvoice.appointment.user.id }}</a>
             </span>
           </dd>
 
           <dt><span>Doctor Name</span></dt>
           <dd>
-            <span>Olivia Fernando</span>
+            <span
+              >{{ labTestInvoice.appointment.doctor.designation }}
+              {{ labTestInvoice.appointment.doctor.name }}</span
+            >
           </dd>
           <dt><span>Doctor ID</span></dt>
           <dd>
-            <span>1</span>
+            <span>{{ labTestInvoice.appointment.doctor.id }}</span>
           </dd>
         </div>
 
         <br />
         <hr />
         <br />
-        <div class="row">
+        <div
+          class="row"
+          *ngFor="let item of labTestInvoice.appointment.labTests"
+        >
           <div class="col-5">
-            <dt><span>Lab Test ID</span></dt>
+            <dt>
+              <span>Lab Test ID: {{ item.id }}</span>
+            </dt>
             <dd>
-              <span>1 <br /><strong>Alkaline</strong> </span>
+              <span
+                ><strong>{{ item.testName }}</strong>
+              </span>
             </dd>
           </div>
 
           <div class="col-3">
             <dt><span>Amount </span></dt>
             <dd>
-              <span>2500</span>
+              <span>{{ item.amount }}</span>
             </dd>
           </div>
 
           <div class="col-12 row">
-            <div class="col-4 row">
-              
-              <button type="button" class="btn btn-danger" [routerLink]="['/admin/print/alkaline']" routerLinkActive="router-link-active" >Full Print</button>
+            <div class="col-2 row">
+              <!-- <button type="button" class="btn btn-danger" [routerLink]="['/admin/print/alkaline']" routerLinkActive="router-link-active" >Full Print</button> -->
+
+              <button
+                type="button"
+                class="btn btn-primary"
+                (click)="form(item.id, labTestInvoice.appointment.id)"
+              >
+                <!-- [routerLink]="['/admin/print/form-alkaline', labTestInvoice.appointment.id]" routerLinkActive="router-link-active" -->
+                New Report
+              </button>
+              &nbsp;&nbsp;&nbsp;
+              <button
+                type="button"
+                class="btn btn-danger"
+                routerLinkActive="router-link-active"
+                (click)="fullPrint(labTestInvoice.appointment.id, item.id)"
+              >
+                Full Print
+              </button>
+              <br />
             </div>
             <div class="col">
-              <a  class="text-info lead"
-                >Click to view the Report &nbsp; 1
-              </a>
+              <a class="text-info lead">Click to view the Report &nbsp; 1 </a>
             </div>
+            <br />
+            <hr style="margin-top: 15px" />
           </div>
         </div>
         <br />
-        <hr />
+        <!-- <hr /> -->
         <br />
         <div class="row">
           <div class="col-5">
-            <dt><span>Test ID</span></dt>
-            <dd>
-              <span
-                >2 <br />
-                <strong>Blood Uria</strong></span
-              >
-            </dd>
-          </div>
+            <br />
+            <br />
 
-          <div class="col-3">
-            <dt><span>Amount 2</span></dt>
-            <dd>
-              <span>3000</span>
-            </dd>
-          </div>
+            <div class="row">
+              <div class="col-6">
+                <dt><span>Bill Amount</span></dt>
+                <dd>
+                  <span>{{ labTestInvoice.billAmount }}</span>
+                </dd>
+              </div>
+              <div class="col">
+                <dt><span>Discount</span></dt>
+                <dd>
+                  <span>{{ labTestInvoice.discount }}</span>
+                </dd>
+              </div>
+            </div>
+            <br />
 
-     
-        <br />
-        <hr />
-        <br />
+            <div class="row">
+              <div class="col-6">
+                <dt><span>Total Amount</span></dt>
+                <dd>
+                  <span>{{ labTestInvoice.totalAmount }}</span>
+                </dd>
+              </div>
+              <div class="col">
+                <dt><span>Paid Amount</span></dt>
+                <dd>
+                  <span>{{ labTestInvoice.paidAmount }}</span>
+                </dd>
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="col-6">
-            <dt><span>Bill Amount</span></dt>
-            <dd>
-              <span>5500</span>
-            </dd>
-          </div>
-          <div class="col">
-            <dt><span>Discount</span></dt>
-            <dd>
-              <span>0</span>
-            </dd>
-          </div>
-        </div>
-        <br />
+            <br />
 
-        <div class="row">
-          <div class="col-6">
-            <dt><span>Total Amount</span></dt>
-            <dd>
-              <span>5500</span>
-            </dd>
-          </div>
-          <div class="col">
-            <dt><span>Paid Amount</span></dt>
-            <dd>
-              <span>5500</span>
-            </dd>
-          </div>
-        </div>
+            <div>
+              <dt><span>Remarks</span></dt>
+              <dd>
+                <span></span>
+              </dd>
+            </div>
 
-        <br />
+            <br />
 
-        <div>
-          <dt><span>Remarks</span></dt>
-          <dd>
-            <span></span>
-          </dd>
-        </div>
+            <br />
 
-        <br />
-        
-       <br />
-
-      <!-- <button type="submit" (click)="previousState()" class="btn btn-info">
+            <!-- <button type="submit" (click)="previousState()" class="btn btn-info">
         <fa-icon icon="arrow-left"></fa-icon>&nbsp;<span>Back</span>
       </button> -->
 
-      <!-- <button type="button" [routerLink]="['/lab-test-invoice', labTestInvoice.id, 'edit']"
+            <!-- <button type="button" [routerLink]="['/lab-test-invoice', labTestInvoice.id, 'edit']"
                 class="btn btn-primary">
                 <fa-icon icon="pencil-alt"></fa-icon>&nbsp;<span>Edit</span>
             </button> -->
+          </div>
+        </div>
+      </dl>
     </div>
- 
+  </div>
+</div>

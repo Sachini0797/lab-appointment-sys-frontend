@@ -24,6 +24,12 @@ import { UpdateAppointmentComponent } from './components/admin/appointment/updat
 import { ReportsListsComponent } from './components/admin/reports-lists/reports-lists.component';
 import { AlkalinePhosphateComponent } from './components/admin/print-reports/alkaline-phosphate/alkaline-phosphate.component';
 import { MyReportsComponent } from './components/patient/my-reports/my-reports.component';
+import { FormAlkalinePhosphateComponent } from './components/admin/print-reports/alkaline-phosphate/form-alkaline-phosphate/form-alkaline-phosphate.component';
+import { FormBloodUreaComponent } from './components/admin/print-reports/blood-urea/form-blood-urea/form-blood-urea.component';
+import { FormDengueAntibodyIggIgmComponent } from './components/admin/print-reports/dengue-antibody-igg-igm/form-dengue-antibody-igg-igm/form-dengue-antibody-igg-igm.component';
+import { BloodUreaComponent } from './components/admin/print-reports/blood-urea/blood-urea.component';
+import { AlkalinePhosphataseListComponent } from './components/patient/my-reports/alkaline-phosphatase-list/alkaline-phosphatase-list.component';
+import { BloodUreaListComponent } from './components/patient/my-reports/blood-urea-list/blood-urea-list.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
@@ -50,12 +56,18 @@ export const routes: Routes = [
     { path: 'admin/appointment', component: AppointmentComponent , canActivate:[AuthGuard]},
     { path: 'admin/appointment/new', component: UpdateAppointmentComponent , canActivate:[AuthGuard]},
     { path: 'admin/lab-tests-invoice', component: LabTestInvoiceComponent , canActivate:[AuthGuard]},
-    { path: 'admin/lab-tests-invoice/new', component: UpdateLabTestInvoiceComponent , canActivate:[AuthGuard]},
-    { path: 'admin/labtestinvoiceprint', component: LabtestinvoiceprintComponent , canActivate:[AuthGuard]},
-    { path: 'admin/reportsList', component: ReportsListsComponent , canActivate:[AuthGuard]},
-    { path: 'admin/print/alkaline', component: AlkalinePhosphateComponent , canActivate:[AuthGuard]},
+    { path: 'admin/lab-tests-invoice/new/:appointmentId', component: UpdateLabTestInvoiceComponent , canActivate:[AuthGuard]},
+    { path: 'admin/labtestinvoiceprint/:labTestInvoiceId', component: LabtestinvoiceprintComponent , canActivate:[AuthGuard]},
+    { path: 'admin/reportsList/:labTestInvoiceId', component: ReportsListsComponent , canActivate:[AuthGuard]},
+    { path: 'admin/print/form-alkaline/:appointmentId', component: FormAlkalinePhosphateComponent , canActivate:[AuthGuard]},
+    { path: 'admin/print/form-blood-urea/:appointmentId', component: FormBloodUreaComponent , canActivate:[AuthGuard]},
+    { path: 'admin/print/form-dengue-antibody/:appointmentId', component: FormDengueAntibodyIggIgmComponent , canActivate:[AuthGuard]},
+    { path: 'admin/print/alkaline/:id', component: AlkalinePhosphateComponent , canActivate:[AuthGuard]},
+    { path: 'admin/print/blood-urea/:id', component: BloodUreaComponent , canActivate:[AuthGuard]},
     { path: 'patient/patient-dashboard', component: PatientDashboardComponent, canActivate:[AuthGuard]},
     { path: 'patient/my-reports', component: MyReportsComponent, canActivate:[AuthGuard]},
+    { path: 'patient/my-reports/alkaline-list', component: AlkalinePhosphataseListComponent, canActivate:[AuthGuard]},
+    { path: 'patient/my-reports/bloodUrea-list', component: BloodUreaListComponent, canActivate:[AuthGuard]},
 ];
 
 

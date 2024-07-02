@@ -14,7 +14,11 @@
           <small>&nbsp;&nbsp; PRIVATE & CONFIDENTIAL</small>
         </p>
       </div>
-      <app-report-details-section></app-report-details-section>
+      <app-report-details-section
+        [appointment]="appointment"
+        
+        [result]="alkalinePhosphate"
+      ></app-report-details-section>
     </div>
 
     <div>
@@ -63,7 +67,7 @@
             <p>ALKALINE PHOSPHATASE</p>
           </div>
           <div class="col-2">
-            <p>13</p>
+            <p>{{ alkalinePhosphate.alkalinePhosphataseValue }}</p>
           </div>
           <div class="col-2">
             <p>U/l</p>

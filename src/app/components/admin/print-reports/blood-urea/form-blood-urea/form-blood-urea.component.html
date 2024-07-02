@@ -1,0 +1,186 @@
+<div class="row justify-content-center">
+  <div class="col-8">
+    <div class="card border-0 shadow-lg mt-5 p-5 mb-5">
+      <form
+        name="editForm"
+        role="form"
+        novalidate
+        (ngSubmit)="save()"
+        [formGroup]="editForm"
+      >
+        <h2 id="jhi-blood-urea-heading">Create or edit Blood Urea</h2>
+
+        <div>
+ 
+          <div class="form-group" [hidden]="!editForm.get('id')!.value">
+            <label for="id">ID</label>
+            <input
+              type="text"
+              class="form-control"
+              id="id"
+              name="id"
+              formControlName="id"
+              readonly
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_uid">Uid</label>
+            <input
+              type="text"
+              class="form-control"
+              name="uid"
+              id="field_uid"
+              formControlName="uid"
+            />
+          </div>
+
+
+          <div class="form-check" style="padding-top: 10px">
+            <label class="form-label" for="field_completed">Completed</label>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              name="completed"
+              id="field_completed"
+              data-cy="completed"
+              formControlName="completed"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_createdDate"
+              >Created Date</label
+            >
+            <div class="d-flex">
+              <input
+                id="field_createdDate"
+                type="datetime-local"
+                class="form-control"
+                name="createdDate"
+                formControlName="createdDate"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_sampleCollectedDate"
+              >Sample Collected Date</label
+            >
+            <div class="d-flex">
+              <input
+                id="field_sampleCollectedDate"
+                type="datetime-local"
+                class="form-control"
+                name="sampleCollectedDate"
+                formControlName="sampleCollectedDate"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_sampleReceivedDate"
+              >Sample Received Date</label
+            >
+            <div class="d-flex">
+              <input
+                id="field_sampleReceivedDate"
+                type="datetime-local"
+                class="form-control"
+                name="sampleReceivedDate"
+                formControlName="sampleReceivedDate"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_reportAuthorizedDate"
+              >Report Authorized Date</label
+            >
+            <div class="d-flex">
+              <input
+                id="field_reportAuthorizedDate"
+                type="datetime-local"
+                class="form-control"
+                name="reportAuthorizedDate"
+                formControlName="reportAuthorizedDate"
+                placeholder="YYYY-MM-DD HH:mm"
+              />
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_bloodUreaValue"
+              >Blood Urea Value</label
+            >
+            <input
+              type="number"
+              class="form-control"
+              name="bloodUreaValue"
+              id="field_bloodUreaValue"
+              formControlName="bloodUreaValue"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_refNo">Ref No</label>
+            <input
+              type="text"
+              class="form-control"
+              name="refNo"
+              id="field_refNo"
+              formControlName="refNo"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_refBy">Ref By</label>
+            <input
+              type="text"
+              class="form-control"
+              name="refBy"
+              id="field_refBy"
+              formControlName="refBy"
+            />
+          </div>
+
+          <div class="form-group">
+            <label class="form-control-label" for="field_remarks"
+              >Remarks</label
+            >
+            <input
+              type="text"
+              class="form-control"
+              name="remarks"
+              id="field_remarks"
+              formControlName="remarks"
+            />
+          </div>
+        </div>
+        <br />
+        <div>
+          <button
+            type="button"
+            id="cancel-save"
+            class="btn btn-secondary"
+            (click)="previousState()"
+          >
+            &nbsp;<span>Cancel</span>
+          </button>
+
+          <button
+            type="submit"
+            id="save-entity"
+            [disabled]="editForm.invalid || isSaving"
+            class="btn btn-primary"
+          >
+            &nbsp;<span>Save</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

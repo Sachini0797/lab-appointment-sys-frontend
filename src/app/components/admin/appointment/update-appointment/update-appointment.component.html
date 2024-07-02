@@ -155,7 +155,7 @@
               />
               <datalist id="doctors">
                 <option *ngFor="let item of doctors" [value]="item.id!">
-                  {{ item.name }}
+                 {{item.designation}} {{ item.name }} 
                 </option>
               </datalist>
             </div>
@@ -210,7 +210,14 @@
                 id="id"
                 name="id"
                 formControlName="id"
+                list="labTechnicians"
               />
+
+              <datalist id="labTechnicians">
+                <option *ngFor="let item of labTechnicians" [value]="item.id!">
+                 {{ item.name }} 
+                </option>
+              </datalist>
             </div>
           </div>
           <div class="col">

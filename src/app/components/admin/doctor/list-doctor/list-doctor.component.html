@@ -100,7 +100,10 @@
                 <button type="submit" class="btn btn-primary btn-sm" data-cy="entityEditButton">
                   <span class="d-none d-md-inline" [routerLink]="[doctor.id]">Edit</span>
                 </button>
-                <button type="submit" class="btn btn-danger btn-sm" data-cy="entityDeleteButton">
+                <button type="submit" class="btn btn-danger btn-sm" data-cy="entityDeleteButton"
+                (click)="delete(doctor.id)"
+
+                >
                   <span class="d-none d-md-inline">Delete</span>
                 </button>
               </div>

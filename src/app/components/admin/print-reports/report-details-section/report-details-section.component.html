@@ -5,18 +5,25 @@
         <div style="padding-left: 10px">
           <p>
             <strong>PATIENT ID</strong
-            ><span style="padding-left: 26px"><b>: 4</b> </span>
+            ><span style="padding-left: 26px"
+              ><b>: {{ appointment.user.id }}</b>
+            </span>
           </p>
           <p>
             <strong>PATIENT NAME</strong
             ><span style="padding-left: 5px"
-              ><b>: MS. Sachini Madushika</b>
+              ><b
+                >: {{ appointment.user.designation }}.
+                {{ appointment.user.firstName }}
+                {{ appointment.user.lastName }}</b
+              >
             </span>
           </p>
           <p>
             <strong>AGE/SEX</strong
             ><span class="patData" style="padding-left: 40px"
-              ><b>:</b> 27 &nbsp;/&nbsp; FEMALE</span
+              ><b>:</b> {{ appointment.user.age }} &nbsp;/&nbsp;
+              {{ appointment.user.gender }}</span
             >
           </p>
           <!-- <div class="row">
@@ -24,17 +31,15 @@
           <p>
             <strong>DATE/TIME</strong>
             <span class="patData" style="padding-left: 25px"
-              ><b>:</b>
-              2024/03/25 &emsp;
-               10:12AM</span
+              ><b>:</b> {{ formattedDate }}</span
             >
           </p>
-        
 
           <p>
             <strong>REF. BY </strong
             ><span class="patData" style="padding-left: 45px"
-              ><b>:</b> Olivia Fernando</span
+              ><b>:</b> {{ appointment.doctor.designation }}
+              {{ appointment.doctor.name }}</span
             >
           </p>
         </div>
@@ -44,34 +49,26 @@
           <p>
             <strong>SAMPLE NO</strong>
             <span class="patData" style="padding-left: 63px"
-              ><b>:</b> </span
+              ><b>:</b> {{ result.id }}</span
             >
           </p>
           <p>
             <strong>SAMPLE COLLECTED</strong>
             <span class="patData" style="padding-left: 14px"
               ><b>:</b>
-              2024/03/25
-              &emsp;
-              timw</span
+              {{ result.sampleCollectedDate | date : "medium" : "long" }}</span
             >
           </p>
           <p>
             <strong>SAMPLE RECEIVED</strong>
             <span class="patData" style="padding-left: 24px"
-              ><b>:</b>
-              date
-              &emsp;
-              time</span
+              ><b>:</b> {{ result.sampleReceivedDate | date : "medium" : "long" }}</span
             >
           </p>
           <p>
             <strong>REPORT AUTHORISED</strong>
             <span class="patData" style="padding-left: 5px"
-              ><b>:</b>
-              date
-              &emsp;
-              time</span
+              ><b>:</b> {{ result.reportAuthorizedDate | date : "medium" : "long" }}</span
             >
           </p>
           <p>
